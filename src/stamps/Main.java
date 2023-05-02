@@ -1,5 +1,6 @@
 package stamps;
 
+import donnees.CollectionProcesseurs;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +11,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("stamp.fxml"));
+        CollectionProcesseurs collec = new CollectionProcesseurs();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("stamp.fxml"));
+        loader.setControllerFactory(iC->new PanneauControleGeneral(collec));
+        Parent root = loader.load();
+
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
