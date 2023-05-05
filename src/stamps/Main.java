@@ -13,8 +13,14 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         CollectionProcesseurs collec = new CollectionProcesseurs();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("stamp.fxml"));
-        loader.setControllerFactory(iC->new PanneauControleGeneral(collec));
+        loader.setLocation(getClass().getResource("vueGlobale.fxml"));
+        ControleVueGenerale pdg = new ControleVueGenerale(collec);
+
+        loader.setControllerFactory(iC->{
+            if (iC.equals(ControleVueGenerale.class)) return pdg;
+            else return null;
+        });
+
         Parent root = loader.load();
 
         primaryStage.setTitle("Hello World");

@@ -5,7 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class PanneauControleGeneral {
+public class ControleVueGenerale {
 
     private CollectionProcesseurs collection;
 
@@ -15,7 +15,7 @@ public class PanneauControleGeneral {
     @FXML
     private Button trier;
 
-    public PanneauControleGeneral(CollectionProcesseurs collec){
+    public ControleVueGenerale(CollectionProcesseurs collec){
         collection = collec;
     }
 
