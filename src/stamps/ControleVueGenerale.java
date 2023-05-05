@@ -4,8 +4,9 @@ import donnees.CollectionProcesseurs;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import mvc.Observateur;
 
-public class ControleVueGenerale {
+public class ControleVueGenerale implements Observateur{
 
     private CollectionProcesseurs collection;
 
@@ -38,5 +39,10 @@ public class ControleVueGenerale {
      */
     public void trier(){
         System.out.println("Tri demandé");
+    }
+
+    @Override
+    public void reagir() {
+
     }
 }

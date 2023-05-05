@@ -14,10 +14,12 @@ public class Main extends Application {
         CollectionProcesseurs collec = new CollectionProcesseurs();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("vueGlobale.fxml"));
-        ControleVueGenerale pdg = new ControleVueGenerale(collec);
+        ControleVueGenerale cvg = new ControleVueGenerale(collec);
+        ControleVueFenetreAjout vfa = new ControleVueFenetreAjout();
 
         loader.setControllerFactory(iC->{
-            if (iC.equals(ControleVueGenerale.class)) return pdg;
+            if (iC.equals(ControleVueGenerale.class)) return cvg;
+            else if (iC.equals(ControleVueFenetreAjout.class)) return vfa;
             else return null;
         });
 
