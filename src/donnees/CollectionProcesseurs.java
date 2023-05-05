@@ -240,4 +240,10 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      */
     public boolean fenetreAjoutEstVisible(){return fenetreAjoutEstVisible;}
 
+    /**
+     * Retourne l'image associée au processeur
+     * @param proc Le processeur
+     * @return L'image associée au processeur
+     */
+    public Image getImage(Processeur proc){return images.get(proc);}
 }

@@ -5,6 +5,7 @@ import donnees.Processeur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import mvc.Observateur;
 
@@ -31,6 +32,8 @@ public class ControleVueFenetreAjout implements Observateur {
      */
     public void ajouter() {
         Processeur p = new Processeur(champMarque.getText(), champModele.getText());
+        Image image = new Image(getClass().getResourceAsStream("/cpu.png"), 100, 100, true, true);
+        collec.ajouterImage(image, p);
         collec.ajouterProcesseur(p);
         champMarque.clear();
         champModele.clear();

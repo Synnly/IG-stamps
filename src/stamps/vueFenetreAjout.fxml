@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <VBox fx:id="fenetreAjout" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: d5d5d5; -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.ControleVueFenetreAjout">
    <children>
       <Label text="Ajouter un processeur">
@@ -33,12 +32,12 @@
       <TextField fx:id="champModele" promptText="Core i7-7700, Ryzen 5 3600, ..." />
       <HBox alignment="CENTER" spacing="20.0">
          <children>
-            <Button fx:id="boutonAnnuler" mnemonicParsing="false" onAction="#annuler" style="-fx-background-color: f77;" text="Annuler">
+            <Button fx:id="boutonAnnuler" cancelButton="true" mnemonicParsing="false" onAction="#annuler" style="-fx-background-color: f77;" text="Annuler">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="boutonAjouter" mnemonicParsing="false" onAction="#ajouter" style="-fx-background-color: #6beb9a;" text="Ajouter">
+            <Button fx:id="boutonAjouter" defaultButton="true" mnemonicParsing="false" onAction="#ajouter" style="-fx-background-color: #6beb9a;" text="Ajouter">
                <font>
                   <Font size="15.0" />
                </font>

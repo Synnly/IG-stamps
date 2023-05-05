@@ -16,10 +16,12 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("vueGlobale.fxml"));
         ControleVueGenerale cvg = new ControleVueGenerale(collec);
         ControleVueFenetreAjout vfa = new ControleVueFenetreAjout(collec);
+        ControleVueVignettes cvv = new ControleVueVignettes(collec);
 
         loader.setControllerFactory(iC->{
             if (iC.equals(ControleVueGenerale.class)) return cvg;
             else if (iC.equals(ControleVueFenetreAjout.class)) return vfa;
+            else if (iC.equals(ControleVueVignettes.class)) return cvv;
             else return null;
         });
 
