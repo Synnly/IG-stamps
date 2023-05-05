@@ -17,6 +17,7 @@ public class ControleVueGenerale implements Observateur{
     private Button trier;
 
     public ControleVueGenerale(CollectionProcesseurs collec){
+        collec.ajouterObservateur(this);
         collection = collec;
     }
 
@@ -31,7 +32,8 @@ public class ControleVueGenerale implements Observateur{
      * Ajoute un processeur à la collection
      */
     public void ajouter(){
-        System.out.println("Ajout demandé");
+        collection.afficherFenetreAjout();
+        collection.notifierObservateurs();
     }
 
     /**
@@ -42,7 +44,5 @@ public class ControleVueGenerale implements Observateur{
     }
 
     @Override
-    public void reagir() {
-
-    }
+    public void reagir() {}
 }

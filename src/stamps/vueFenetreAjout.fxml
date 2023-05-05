@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: #808080ff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" />
+<VBox fx:id="fenetreAjout" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: d5d5d5; -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.ControleVueFenetreAjout">
+   <children>
+      <Label text="Ajouter un processeur">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+      </Label>
+      <Label text="Marque">
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="champMarque" promptText="Intel, AMD, ..." />
+      <Label text="Modèle">
+         <VBox.margin>
+            <Insets bottom="5.0" top="20.0" />
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="champModele" promptText="Core i7-7700, Ryzen 5 3600, ..." />
+      <HBox alignment="CENTER" spacing="20.0">
+         <children>
+            <Button fx:id="boutonAnnuler" mnemonicParsing="false" onAction="#annuler" style="-fx-background-color: f77;" text="Annuler">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="boutonAjouter" mnemonicParsing="false" onAction="#ajouter" style="-fx-background-color: #6beb9a;" text="Ajouter">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

@@ -15,7 +15,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("vueGlobale.fxml"));
         ControleVueGenerale cvg = new ControleVueGenerale(collec);
-        ControleVueFenetreAjout vfa = new ControleVueFenetreAjout();
+        ControleVueFenetreAjout vfa = new ControleVueFenetreAjout(collec);
 
         loader.setControllerFactory(iC->{
             if (iC.equals(ControleVueGenerale.class)) return cvg;
@@ -28,6 +28,8 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+        collec.notifierObservateurs();
     }
 
 

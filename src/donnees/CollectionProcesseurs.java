@@ -1,29 +1,33 @@
 package donnees;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import javafx.scene.image.Image;
+import mvc.SujetObserve;
 
-public class CollectionProcesseurs extends mvc.SujetObserve{
+import java.util.*;
+
+public class CollectionProcesseurs extends SujetObserve implements Iterable<Processeur>{
 
     private List<Processeur> listeProcesseurs;
     private List<String> listeMarques, listeModeles, listeSockets;
     private List<Integer> listeFrequences, listeNbCoeurs, listeNbThreads, listeCaches, listeAnnees;
+    private HashMap<Processeur, Image> images = new HashMap<>();
+
+    private boolean fenetreAjoutEstVisible = false;
 
     /**
      * Constructeur de la collection de processeurs
      */
     public CollectionProcesseurs() {
-        this.listeProcesseurs = new ArrayList<>();
-        this.listeMarques = new ArrayList<>();
-        this.listeModeles = new ArrayList<>();
-        this.listeSockets = new ArrayList<>();
-        this.listeFrequences = new ArrayList<>();
-        this.listeNbCoeurs = new ArrayList<>();
-        this.listeNbThreads = new ArrayList<>();
-        this.listeCaches = new ArrayList<>();
-        this.listeAnnees = new ArrayList<>();
+        listeProcesseurs = new ArrayList<>();
+        listeMarques = new ArrayList<>();
+        listeModeles = new ArrayList<>();
+        listeSockets = new ArrayList<>();
+        listeFrequences = new ArrayList<>();
+        listeNbCoeurs = new ArrayList<>();
+        listeNbThreads = new ArrayList<>();
+        listeCaches = new ArrayList<>();
+        listeAnnees = new ArrayList<>();
+        images = new HashMap<>();
     }
 
     /**
@@ -31,7 +35,17 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param processeur Le processeur à ajouter
      */
     public void ajouterProcesseur(Processeur processeur) {
-        this.listeProcesseurs.add(processeur);
+        listeProcesseurs.add(processeur);
+
+        // Ajout des tags
+        ajouterMarque(processeur.getMarque());
+        ajouterModele(processeur.getModele());
+        ajouterSocket(processeur.getSocket());
+        ajouterFrequence(processeur.getFrequence());
+        ajouterNbCoeurs(processeur.getNbCoeurs());
+        ajouterNbThreads(processeur.getNbThreads());
+        ajouterCache(processeur.getCache());
+        ajouterAnnee(processeur.getAnnee());
     }
 
     /**
@@ -47,7 +61,7 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param annee L'année de sortie
      */
     public void modifierProcesseur(Processeur processeur, String marque, String modele, String socket, int frequence, int nbCoeurs, int nbThreads, int cache, int annee) {
-        for (Processeur p : this.listeProcesseurs) {
+        for (Processeur p : listeProcesseurs) {
             if (p.getIdentifiant() == processeur.getIdentifiant()) {
                 p.setMarque(marque);
                 p.setModele(modele);
@@ -66,9 +80,9 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param processeur Le processeur à supprimer
      */
     public void supprimerProcesseur(Processeur processeur) {
-        for (Processeur p : this.listeProcesseurs) {
+        for (Processeur p : listeProcesseurs) {
             if (p.getIdentifiant() == processeur.getIdentifiant()) {
-                this.listeProcesseurs.remove(p);
+                listeProcesseurs.remove(p);
             }
         }
     }
@@ -79,10 +93,10 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      */
     public void trierProcesseurs(boolean sensInverse){
         if (sensInverse) {
-            Collections.sort(this.listeProcesseurs, Comparator.comparing(Processeur::getAnnee));
-            Collections.reverse(this.listeProcesseurs);
+            Collections.sort(listeProcesseurs, Comparator.comparing(Processeur::getAnnee));
+            Collections.reverse(listeProcesseurs);
         } else {
-            Collections.sort(this.listeProcesseurs, Comparator.comparing(Processeur::getAnnee));
+            Collections.sort(listeProcesseurs, Comparator.comparing(Processeur::getAnnee));
         }
     }
 
@@ -90,7 +104,7 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @return Le nombre de processeurs dans la collection
      */
     public int getNbProcesseurs() {
-        return this.listeProcesseurs.size();
+        return listeProcesseurs.size();
     }
 
     /**
@@ -114,7 +128,7 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @return Le processeur correspondant à l'identifiant
      */
     public Processeur getProcesseur(int identifiant) {
-        return this.listeProcesseurs.get(identifiant);
+        return listeProcesseurs.get(identifiant);
     }
 
     /**
@@ -122,8 +136,8 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param marque La marque à ajouter
      */
     public void ajouterMarque(String marque) {
-        if (!this.listeMarques.contains(marque)) {
-            this.listeMarques.add(marque);
+        if (!listeMarques.contains(marque)) {
+            listeMarques.add(marque);
         }
     }
 
@@ -132,8 +146,8 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param modele Le modèle à ajouter
      */
     public void ajouterModele(String modele) {
-        if (!this.listeModeles.contains(modele)) {
-            this.listeModeles.add(modele);
+        if (!listeModeles.contains(modele)) {
+            listeModeles.add(modele);
         }
     }
 
@@ -142,8 +156,8 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param socket Le socket à ajouter
      */
     public void ajouterSocket(String socket) {
-        if (!this.listeSockets.contains(socket)) {
-            this.listeSockets.add(socket);
+        if (!listeSockets.contains(socket)) {
+            listeSockets.add(socket);
         }
     }
 
@@ -152,8 +166,8 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param frequence La fréquence à ajouter
      */
     public void ajouterFrequence(int frequence) {
-        if (!this.listeFrequences.contains(frequence)) {
-            this.listeFrequences.add(frequence);
+        if (!listeFrequences.contains(frequence)) {
+            listeFrequences.add(frequence);
         }
     }
 
@@ -162,8 +176,8 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param nbCoeurs Le nombre de coeurs à ajouter
      */
     public void ajouterNbCoeurs(int nbCoeurs) {
-        if (!this.listeNbCoeurs.contains(nbCoeurs)) {
-            this.listeNbCoeurs.add(nbCoeurs);
+        if (!listeNbCoeurs.contains(nbCoeurs)) {
+            listeNbCoeurs.add(nbCoeurs);
         }
     }
 
@@ -172,8 +186,8 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param nbThreads Le nombre de threads à ajouter
      */
     public void ajouterNbThreads(int nbThreads) {
-        if (!this.listeNbThreads.contains(nbThreads)) {
-            this.listeNbThreads.add(nbThreads);
+        if (!listeNbThreads.contains(nbThreads)) {
+            listeNbThreads.add(nbThreads);
         }
     }
 
@@ -182,8 +196,8 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param cache La taille de cache à ajouter
      */
     public void ajouterCache(int cache) {
-        if (!this.listeCaches.contains(cache)) {
-            this.listeCaches.add(cache);
+        if (!listeCaches.contains(cache)) {
+            listeCaches.add(cache);
         }
     }
 
@@ -192,9 +206,38 @@ public class CollectionProcesseurs extends mvc.SujetObserve{
      * @param annee L'année à ajouter
      */
     public void ajouterAnnee(int annee) {
-        if (!this.listeAnnees.contains(annee)) {
-            this.listeAnnees.add(annee);
+        if (!listeAnnees.contains(annee)) {
+            listeAnnees.add(annee);
         }
     }
+
+    /**
+     * Associe une image au processeur. Si une image est déjà associée, elle est remplacée
+     * @param image L'image à associer
+     * @param proc Le processeur
+     */
+    public void ajouterImage(Image image, Processeur proc){
+        images.put(proc, image);
+    }
+
+    @Override
+    public Iterator<Processeur> iterator() {
+        return listeProcesseurs.iterator();
+    }
+
+    /**
+     * Cache la fenêtre d'ajout
+     */
+    public void masquerFenetreAjout(){fenetreAjoutEstVisible = false;}
+
+    /**
+     * Affiche la fenêtre d'ajout
+     */
+    public void afficherFenetreAjout(){fenetreAjoutEstVisible = true;}
+
+    /**
+     * @return true si la fenêtre d'ajout est visible, false sinon
+     */
+    public boolean fenetreAjoutEstVisible(){return fenetreAjoutEstVisible;}
 
 }
