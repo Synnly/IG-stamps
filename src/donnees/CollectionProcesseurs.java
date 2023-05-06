@@ -83,11 +83,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param processeur Le processeur à supprimer
      */
     public void supprimerProcesseur(Processeur processeur) {
-        for (Processeur p : listeProcesseurs) {
-            if (p.getIdentifiant() == processeur.getIdentifiant()) {
-                listeProcesseurs.remove(p);
-            }
-        }
+        listeProcesseurs.removeIf(p -> p.getIdentifiant() == processeur.getIdentifiant());
     }
 
     /**

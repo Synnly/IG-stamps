@@ -4,7 +4,9 @@ import donnees.CollectionProcesseurs;
 import donnees.Processeur;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.OverrunStyle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -37,10 +39,20 @@ public class ControleVueVignettes implements Observateur {
             vueImage = new ImageView(collection.getImage(p));
             vueImage.setStyle("fillWidth:false; fitHeight:100.0; fitWidth:100.0; pickOnBounds:true; preserveRatio:true");
 
+            ContextMenu menu = new ContextMenu();
+            MenuItem supprimer = new MenuItem("Supprimer");
+            supprimer.setOnAction(e->{
+                collection.supprimerProcesseur(p);
+                collection.notifierObservateurs();
+            });
+            menu.getItems().add(supprimer);
+
             etiquette = new Label(p.getMarque() + " " + p.getModele());
             etiquette.setTextOverrun(OverrunStyle.CENTER_ELLIPSIS);
             etiquette.setEllipsisString("...");
             etiquette.setMaxWidth(100.0);
+
+            etiquette.setContextMenu(menu);
 
             vignette = new VBox();
             vignette.setPadding(new Insets(5, 5, 5, 5));

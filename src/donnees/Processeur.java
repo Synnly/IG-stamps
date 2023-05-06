@@ -40,6 +40,7 @@ public class Processeur {
      * @param modele Le modèle
      */
     public Processeur (String marque, String modele) {
+        this.identifiant = FabriqueIdentifiant.getIntance().getIdentifiant();
         this.marque = marque;
         this.modele = modele;
     }
