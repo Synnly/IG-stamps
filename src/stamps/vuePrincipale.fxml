@@ -17,8 +17,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Modes">
             <items>
-              <MenuItem mnemonicParsing="false" text="Edition" />
-                  <MenuItem mnemonicParsing="false" text="Consultation" />
+              <MenuItem fx:id="menuEdition" mnemonicParsing="false" onAction="#modeEdition" text="Edition" />
+                  <MenuItem fx:id="menuConsultation" mnemonicParsing="false" onAction="#modeConsultation" text="Consultation" />
                   <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter" />
             </items>
           </Menu>
@@ -34,7 +34,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#ajouter" prefHeight="64.0" prefWidth="64.0" fx:id="boutonAjouter">
+            <Button fx:id="boutonAjouter" mnemonicParsing="false" onAction="#ajouter" prefHeight="64.0" prefWidth="64.0">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +43,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#trier" fx:id="boutonTrier">
+            <Button fx:id="boutonTrier" mnemonicParsing="false" onAction="#trier">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>

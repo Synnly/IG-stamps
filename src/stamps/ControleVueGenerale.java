@@ -4,17 +4,22 @@ import donnees.CollectionProcesseurs;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import mvc.Observateur;
 
 public class ControleVueGenerale implements Observateur{
 
     private CollectionProcesseurs collection;
+    private boolean estEnModeConsultation = true;
 
     @FXML
     private Button boutonAjouter;
 
     @FXML
     private Button boutonTrier;
+
+    @FXML
+    private MenuItem menuEdition, menuConsultation;
 
     public ControleVueGenerale(CollectionProcesseurs collec){
         collec.ajouterObservateur(this);
@@ -44,8 +49,21 @@ public class ControleVueGenerale implements Observateur{
         collection.notifierObservateurs();
     }
 
+    public void modeEdition(){
+        estEnModeConsultation = false;
+        collection.notifierObservateurs();
+    }
+
+    public void modeConsultation(){
+        estEnModeConsultation = true;
+        collection.notifierObservateurs();
+    }
+
     @Override
     public void reagir() {
         boutonTrier.setDisable(collection.getNbProcesseurs()<2);
+        menuConsultation.setDisable(estEnModeConsultation);
+        menuEdition.setDisable(!estEnModeConsultation);
+        boutonAjouter.setDisable(estEnModeConsultation);
     }
 }
