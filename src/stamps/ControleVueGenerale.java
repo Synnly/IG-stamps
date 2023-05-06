@@ -11,10 +11,10 @@ public class ControleVueGenerale implements Observateur{
     private CollectionProcesseurs collection;
 
     @FXML
-    private Button ajouter;
+    private Button boutonAjouter;
 
     @FXML
-    private Button trier;
+    private Button boutonTrier;
 
     public ControleVueGenerale(CollectionProcesseurs collec){
         collec.ajouterObservateur(this);
@@ -40,9 +40,12 @@ public class ControleVueGenerale implements Observateur{
      * Trie la collection en fonction du précédent sens de tri
      */
     public void trier(){
-        System.out.println("Tri demandé");
+        collection.trierProcesseurs();
+        collection.notifierObservateurs();
     }
 
     @Override
-    public void reagir() {}
+    public void reagir() {
+        boutonTrier.setDisable(collection.getNbProcesseurs()<2);
+    }
 }

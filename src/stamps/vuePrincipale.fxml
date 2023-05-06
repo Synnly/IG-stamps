@@ -9,7 +9,7 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Fichiers">
             <items>
               <MenuItem mnemonicParsing="false" text="Sauvegarder" />
                   <MenuItem mnemonicParsing="false" text="Importer" />
@@ -34,15 +34,16 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#ajouter" prefHeight="64.0" prefWidth="64.0">
+            <Button mnemonicParsing="false" onAction="#ajouter" prefHeight="64.0" prefWidth="64.0" fx:id="boutonAjouter">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ressources/ajouter.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
-            <Button mnemonicParsing="false" onAction="#trier">
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#trier" fx:id="boutonTrier">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>

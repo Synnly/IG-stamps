@@ -11,6 +11,8 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     private List<String> listeMarques, listeModeles, listeSockets;
     private List<Integer> listeFrequences, listeNbCoeurs, listeNbThreads, listeCaches, listeAnnees;
     private HashMap<Processeur, Image> images = new HashMap<>();
+    private boolean triCroissant = true;
+    private boolean estTrie = false;
 
     private boolean fenetreAjoutEstVisible = false;
 
@@ -35,6 +37,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param processeur Le processeur à ajouter
      */
     public void ajouterProcesseur(Processeur processeur) {
+        estTrie = false;
         listeProcesseurs.add(processeur);
 
         // Ajout des tags
@@ -88,15 +91,32 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     }
 
     /**
-     * Trie la collection de processeurs par année
-     * @param sensInverse Si vrai, trie dans l'ordre inverse
+     * Trie la collection de processeurs par marque puis par modèle
      */
-    public void trierProcesseurs(boolean sensInverse){
-        if (sensInverse) {
-            Collections.sort(listeProcesseurs, Comparator.comparing(Processeur::getAnnee));
+    public void trierProcesseurs(){
+        if (estTrie) {
             Collections.reverse(listeProcesseurs);
-        } else {
-            Collections.sort(listeProcesseurs, Comparator.comparing(Processeur::getAnnee));
+            triCroissant = !triCroissant;
+        }
+        else {
+            Collections.sort(listeProcesseurs, new Comparator<Processeur>() {
+                public int compare(Processeur p1, Processeur p2) {
+                    // Comparaison des marques
+                    String x1 = p1.getMarque();
+                    String x2 = p2.getMarque();
+                    int sComp = x1.compareTo(x2);
+                    if (sComp != 0) {return sComp;}
+
+                    // Comparaison des modèles
+                    else {
+                        String y1 = p1.getModele();
+                        String y2 = p2.getModele();
+                        return y1.compareTo(y2);
+                    }
+                }
+            });
+            triCroissant = true;
+            estTrie = true;
         }
     }
 
