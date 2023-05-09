@@ -13,7 +13,9 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     private HashMap<Processeur, Image> images = new HashMap<>();
     private boolean triCroissant = true;
     private boolean estTrie = false;
-
+    private boolean enVueDetails = false;
+    private Processeur processeurEnVueDetails;
+    private boolean modeConsultation = true;
     private boolean fenetreAjoutEstVisible = false;
 
     /**
@@ -262,4 +264,41 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @return L'image associée au processeur
      */
     public Image getImage(Processeur proc){return images.get(proc);}
+
+    /**
+     * @return true si la vue des details est visible, false sinon
+     */
+    public boolean estEnVueDetails(){return enVueDetails;}
+
+    /**
+     * Passe la vue en vue générale
+     */
+    public void passerEnVueGenerale(){enVueDetails = false;}
+
+    /**
+     * Passe la vue en vue des détails
+     */
+    public void passerEnVueDetails(){enVueDetails = true;}
+
+    /**
+     * Modifie le processeur inspecté dans la vue des détails
+     * @param proc Le processeur à inspecter
+     */
+    public void inspecterProcesseur(Processeur proc){processeurEnVueDetails = proc;}
+
+    /**
+     * Passe en mode consultation
+     */
+    public void modeConsultation(){modeConsultation = true;}
+
+    /**
+     * Passe en mode édition
+     */
+    public void modeEdition(){modeConsultation = false;}
+
+    /**
+     *
+     * @return True si le mode est consultation, false sinon
+     */
+    public boolean estEnModeConsultation(){return modeConsultation;}
 }

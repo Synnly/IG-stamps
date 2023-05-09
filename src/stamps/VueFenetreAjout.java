@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import mvc.Observateur;
 
-public class ControleVueFenetreAjout implements Observateur {
+public class VueFenetreAjout implements Observateur {
 
     private CollectionProcesseurs collec;
 
@@ -22,7 +22,7 @@ public class ControleVueFenetreAjout implements Observateur {
     @FXML
     private Button boutonAnnuler, boutonAjouter;
 
-    public ControleVueFenetreAjout(CollectionProcesseurs collec) {
+    public VueFenetreAjout(CollectionProcesseurs collec) {
         collec.ajouterObservateur(this);
         this.collec = collec;
     }

@@ -5,12 +5,15 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
 import mvc.Observateur;
 
-public class ControleVueGenerale implements Observateur{
+public class VueGlobale implements Observateur{
 
     private CollectionProcesseurs collection;
-    private boolean estEnModeConsultation = true;
+
+    @FXML
+    private BorderPane vueGlobale;
 
     @FXML
     private Button boutonAjouter;
@@ -21,7 +24,7 @@ public class ControleVueGenerale implements Observateur{
     @FXML
     private MenuItem menuEdition, menuConsultation;
 
-    public ControleVueGenerale(CollectionProcesseurs collec){
+    public VueGlobale(CollectionProcesseurs collec){
         collec.ajouterObservateur(this);
         collection = collec;
     }
@@ -49,21 +52,30 @@ public class ControleVueGenerale implements Observateur{
         collection.notifierObservateurs();
     }
 
+    /**
+     * Passe en mode édition
+     */
     public void modeEdition(){
-        estEnModeConsultation = false;
+        collection.modeEdition();
         collection.notifierObservateurs();
     }
 
+    /**
+     * Passe en mode consultation
+     */
     public void modeConsultation(){
-        estEnModeConsultation = true;
+        collection.modeConsultation();
         collection.notifierObservateurs();
     }
 
     @Override
     public void reagir() {
-        boutonTrier.setDisable(collection.getNbProcesseurs()<2);
-        menuConsultation.setDisable(estEnModeConsultation);
-        menuEdition.setDisable(!estEnModeConsultation);
-        boutonAjouter.setDisable(estEnModeConsultation);
+        vueGlobale.setVisible(!collection.estEnVueDetails());
+        if (!collection.estEnVueDetails()){
+            boutonTrier.setDisable(collection.getNbProcesseurs()<2);
+            menuConsultation.setDisable(collection.estEnModeConsultation());
+            menuEdition.setDisable(!collection.estEnModeConsultation());
+            boutonAjouter.setDisable(collection.estEnModeConsultation());
+        }
     }
 }
