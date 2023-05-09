@@ -19,7 +19,6 @@ public class VueDetails implements Observateur {
 
     @Override
     public void reagir() {
-        System.out.println(vueDetails);
         vueDetails.setVisible(collection.estEnVueDetails());
     }
 }
