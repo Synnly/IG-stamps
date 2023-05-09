@@ -5,7 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
 import mvc.Observateur;
 
 public class VueGlobale implements Observateur{
@@ -13,7 +13,7 @@ public class VueGlobale implements Observateur{
     private CollectionProcesseurs collection;
 
     @FXML
-    private BorderPane vueGlobale;
+    private AnchorPane vueGlobale;
 
     @FXML
     private Button boutonAjouter;
@@ -21,19 +21,9 @@ public class VueGlobale implements Observateur{
     @FXML
     private Button boutonTrier;
 
-    @FXML
-    private MenuItem menuEdition, menuConsultation;
-
     public VueGlobale(CollectionProcesseurs collec){
         collec.ajouterObservateur(this);
         collection = collec;
-    }
-
-    /**
-     * Quitte l'application
-     */
-    public void quitter(){
-        Platform.exit();
     }
 
     /**
@@ -52,29 +42,11 @@ public class VueGlobale implements Observateur{
         collection.notifierObservateurs();
     }
 
-    /**
-     * Passe en mode édition
-     */
-    public void modeEdition(){
-        collection.modeEdition();
-        collection.notifierObservateurs();
-    }
-
-    /**
-     * Passe en mode consultation
-     */
-    public void modeConsultation(){
-        collection.modeConsultation();
-        collection.notifierObservateurs();
-    }
-
     @Override
     public void reagir() {
         vueGlobale.setVisible(!collection.estEnVueDetails());
         if (!collection.estEnVueDetails()){
             boutonTrier.setDisable(collection.getNbProcesseurs()<2);
-            menuConsultation.setDisable(collection.estEnModeConsultation());
-            menuEdition.setDisable(!collection.estEnModeConsultation());
             boutonAjouter.setDisable(collection.estEnModeConsultation());
         }
     }

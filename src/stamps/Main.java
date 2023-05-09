@@ -14,6 +14,7 @@ public class Main extends Application {
         CollectionProcesseurs collec = new CollectionProcesseurs();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("vueGenerale.fxml"));
+        VueGenerale vge = new VueGenerale(collec);
         VueGlobale cvg = new VueGlobale(collec);
         VueFenetreAjout vfa = new VueFenetreAjout(collec);
         VueVignettes cvv = new VueVignettes(collec);
@@ -24,13 +25,15 @@ public class Main extends Application {
             else if (iC.equals(VueFenetreAjout.class)) return vfa;
             else if (iC.equals(VueVignettes.class)) return cvv;
             else if (iC.equals(VueDetails.class)) return cvd;
+            else if (iC.equals(VueGenerale.class)) return vge;
             else return null;
         });
 
         Parent root = loader.load();
         primaryStage.setTitle("Hello World");
-        primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setMinHeight(500);
+        primaryStage.setMinWidth(800);
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
         collec.notifierObservateurs();

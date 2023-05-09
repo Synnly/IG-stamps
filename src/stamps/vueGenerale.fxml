@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="400.0" prefWidth="600.0">
-    <fx:include source="vueDetails.fxml"/>
-    <fx:include source="vueGlobale.fxml"/>
-</StackPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.VueGenerale">
+   <children>
+       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+           <menus>
+               <Menu mnemonicParsing="false" text="Fichiers">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Sauvegarder" />
+                       <MenuItem mnemonicParsing="false" text="Importer" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Modes">
+                   <items>
+                       <MenuItem fx:id="menuEdition" mnemonicParsing="false" onAction="#modeEdition" text="Edition" />
+                       <MenuItem fx:id="menuConsultation" mnemonicParsing="false" onAction="#modeConsultation" text="Consultation" />
+                       <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
+       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+           <fx:include source="vueDetails.fxml" />
+           <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="vueGlobale.fxml" />
+       </StackPane>
+
+   </children>
+</AnchorPane>

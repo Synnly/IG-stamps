@@ -5,34 +5,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="720.0" maxWidth="1280.0" minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.VueGlobale" fx:id="vueGlobale">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Fichiers">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Sauvegarder" />
-                  <MenuItem mnemonicParsing="false" text="Importer" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Modes">
-            <items>
-              <MenuItem fx:id="menuEdition" mnemonicParsing="false" onAction="#modeEdition" text="Edition" />
-                  <MenuItem fx:id="menuConsultation" mnemonicParsing="false" onAction="#modeConsultation" text="Consultation" />
-                  <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
-   <center>
-       <StackPane>
+<AnchorPane fx:id="vueGlobale" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.VueGlobale">
+
+       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <fx:include fx:id="vueVignettes" source="vueVignettes.fxml" />
            <fx:include fx:id="vueFenetreAjout" source="vueFenetreAjout.fxml" />
        </StackPane>
-   </center>
-   <bottom>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="boutonAjouter" mnemonicParsing="false" onAction="#ajouter" prefHeight="64.0" prefWidth="64.0">
                <graphic>
@@ -56,8 +35,4 @@
             <Insets right="10.0" />
          </padding>
       </HBox>
-   </bottom>
-   <left>
-      <Pane maxHeight="0.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
-   </left>
-</BorderPane>
+</AnchorPane>
