@@ -11,13 +11,15 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     private List<String> listeMarques, listeModeles, listeSockets;
     private List<Integer> listeNbCoeurs, listeNbThreads, listeCaches, listeAnnees;
     private List<Float> listeFrequences;
-    private HashMap<Processeur, Image> images = new HashMap<>();
+    private HashMap<Processeur, Image> petitesImages;
+    private HashMap<Processeur, Image> images;
     private boolean triCroissant = true;
     private boolean estTrie = false;
     private boolean enVueDetails = false;
     private Processeur processeurEnVueDetails = null;
     private boolean modeConsultation = true;
     private boolean fenetreAjoutEstVisible = false;
+    private int tailleImage = 300;
 
     /**
      * Constructeur de la collection de processeurs
@@ -32,6 +34,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         listeNbThreads = new ArrayList<>();
         listeCaches = new ArrayList<>();
         listeAnnees = new ArrayList<>();
+        petitesImages = new HashMap<>();
         images = new HashMap<>();
     }
 
@@ -239,6 +242,15 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         images.put(proc, image);
     }
 
+    /**
+     * Associe une petite image au processeur. Si une image est déjà associée, elle est remplacée
+     * @param image L'image à associer
+     * @param proc Le processeur
+     */
+    public void ajouterPetiteImage(Image image, Processeur proc){
+        petitesImages.put(proc, image);
+    }
+
     @Override
     public Iterator<Processeur> iterator() {
         return listeProcesseurs.iterator();
@@ -265,6 +277,13 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @return L'image associée au processeur
      */
     public Image getImage(Processeur proc){return images.get(proc);}
+
+    /**
+     * Retourne la petite image associée au processeur
+     * @param proc Le processeur
+     * @return L'image associée au processeur
+     */
+    public Image getPetiteImage(Processeur proc){return petitesImages.get(proc);}
 
     /**
      * @return true si la vue des details est visible, false sinon
@@ -324,4 +343,6 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         int indice = listeProcesseurs.indexOf(processeurEnVueDetails);
         processeurEnVueDetails = listeProcesseurs.get((indice-1+listeProcesseurs.size()) % listeProcesseurs.size());
     }
+
+    public int getTailleImage(){return tailleImage;}
 }

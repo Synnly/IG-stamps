@@ -3,6 +3,8 @@ package stamps;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import mvc.Observateur;
 import donnees.CollectionProcesseurs;
@@ -21,6 +23,9 @@ public class VueDetails implements Observateur {
 
     @FXML
     private Label labelMarque, labelModele, labelFrequence, labelCoeurs, labelThreads, labelSocket, labelAnnee, labelCache;
+
+    @FXML
+    private ImageView vignetteProcesseur;
 
     public VueDetails(CollectionProcesseurs collec){
         collec.ajouterObservateur(this);
@@ -55,6 +60,9 @@ public class VueDetails implements Observateur {
             labelThreads.setText(collection.getProcesseurEnVueDetails().getNbThreads() == 0 ? "N/A" : Integer.toString(collection.getProcesseurEnVueDetails().getNbThreads()));
             labelCache.setText(collection.getProcesseurEnVueDetails().getCache() == 0 ? "N/A" : collection.getProcesseurEnVueDetails().getCache() + " Mo");
             labelAnnee.setText(collection.getProcesseurEnVueDetails().getAnnee() == 0 ? "N/A" : Integer.toString(collection.getProcesseurEnVueDetails().getAnnee()));
+            vignetteProcesseur.setImage(collection.getImage(collection.getProcesseurEnVueDetails()));
+            vignetteProcesseur.setPreserveRatio(true);
+            vignetteProcesseur.setFitWidth(collection.getTailleImage());
         }
     }
 }

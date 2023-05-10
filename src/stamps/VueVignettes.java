@@ -36,8 +36,9 @@ public class VueVignettes implements Observateur {
         Label etiquetteMarque, etiquetteModele;
 
         for (Processeur p : collection){
-            vueImage = new ImageView(collection.getImage(p));
-            vueImage.setStyle("fillWidth:false; fitHeight:100.0; fitWidth:100.0; pickOnBounds:true; preserveRatio:true");
+            vueImage = new ImageView(collection.getPetiteImage(p));
+            vueImage.setPreserveRatio(true);
+            vueImage.setFitWidth(100.0);
 
             ContextMenu menu = new ContextMenu();
             MenuItem supprimer = new MenuItem("Supprimer");

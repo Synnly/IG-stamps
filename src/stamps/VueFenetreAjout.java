@@ -32,8 +32,11 @@ public class VueFenetreAjout implements Observateur {
      */
     public void ajouter() {
         Processeur p = new Processeur(champMarque.getText(), champModele.getText());
-        Image image = new Image(getClass().getResourceAsStream("/cpu.png"), 100, 100, true, true);
+
+        Image image = new Image(getClass().getResourceAsStream("/cpu.png"), collec.getTailleImage(), collec.getTailleImage(), true, true);
+        Image petiteImage = new Image(getClass().getResourceAsStream("/cpu.png"),100, 100, true, true);
         collec.ajouterImage(image, p);
+        collec.ajouterPetiteImage(petiteImage, p);
         collec.ajouterProcesseur(p);
         champMarque.clear();
         champModele.clear();
