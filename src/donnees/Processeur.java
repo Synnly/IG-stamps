@@ -5,7 +5,7 @@ public class Processeur {
     private String marque;
     private String modele;
     private String socket;
-    private int frequence;
+    private float frequence;
     private int nbCoeurs;
     private int nbThreads;
     private int cache;
@@ -22,7 +22,7 @@ public class Processeur {
      * @param cache La taille du cache en MB
      * @param annee L'année de sortie
      */
-    public Processeur(String marque, String modele, String socket, int frequence, int nbCoeurs, int nbThreads, int cache, int annee) {
+    public Processeur(String marque, String modele, String socket, float frequence, int nbCoeurs, int nbThreads, int cache, int annee) {
         this.identifiant = FabriqueIdentifiant.getIntance().getIdentifiant();
         this.marque = marque;
         this.modele = modele;
@@ -43,6 +43,12 @@ public class Processeur {
         this.identifiant = FabriqueIdentifiant.getIntance().getIdentifiant();
         this.marque = marque;
         this.modele = modele;
+        this.socket = "";
+        this.frequence = 0;
+        this.nbCoeurs = 0;
+        this.nbThreads = 0;
+        this.cache = 0;
+        this.annee = 0;
     }
 
     /**
@@ -100,7 +106,7 @@ public class Processeur {
 /**
      * @return La fréquence du processeur
      */
-    public int getFrequence() {
+    public float getFrequence() {
         return frequence;
     }
 
@@ -108,7 +114,7 @@ public class Processeur {
      * Modifie la fréquence du processeur
      * @param frequence La fréquence du processeur
      */
-    public void setFrequence(int frequence) {
+    public void setFrequence(float frequence) {
         this.frequence = frequence;
     }
 

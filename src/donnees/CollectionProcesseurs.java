@@ -9,12 +9,13 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
 
     private List<Processeur> listeProcesseurs;
     private List<String> listeMarques, listeModeles, listeSockets;
-    private List<Integer> listeFrequences, listeNbCoeurs, listeNbThreads, listeCaches, listeAnnees;
+    private List<Integer> listeNbCoeurs, listeNbThreads, listeCaches, listeAnnees;
+    private List<Float> listeFrequences;
     private HashMap<Processeur, Image> images = new HashMap<>();
     private boolean triCroissant = true;
     private boolean estTrie = false;
     private boolean enVueDetails = false;
-    private Processeur processeurEnVueDetails;
+    private Processeur processeurEnVueDetails = null;
     private boolean modeConsultation = true;
     private boolean fenetreAjoutEstVisible = false;
 
@@ -65,7 +66,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param cache La taille du cache en MB
      * @param annee L'année de sortie
      */
-    public void modifierProcesseur(Processeur processeur, String marque, String modele, String socket, int frequence, int nbCoeurs, int nbThreads, int cache, int annee) {
+    public void modifierProcesseur(Processeur processeur, String marque, String modele, String socket, float frequence, int nbCoeurs, int nbThreads, int cache, int annee) {
         for (Processeur p : listeProcesseurs) {
             if (p.getIdentifiant() == processeur.getIdentifiant()) {
                 p.setMarque(marque);
@@ -183,7 +184,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * Ajoute une fréquence à la liste des fréquences si est n'est pas déjà présente
      * @param frequence La fréquence à ajouter
      */
-    public void ajouterFrequence(int frequence) {
+    public void ajouterFrequence(float frequence) {
         if (!listeFrequences.contains(frequence)) {
             listeFrequences.add(frequence);
         }
@@ -285,6 +286,11 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param proc Le processeur à inspecter
      */
     public void inspecterProcesseur(Processeur proc){processeurEnVueDetails = proc;}
+
+    /**
+     * @return Le processeur inspecté dans la vue des détails
+     */
+    public Processeur getProcesseurEnVueDetails(){return processeurEnVueDetails;}
 
     /**
      * Passe en mode consultation
