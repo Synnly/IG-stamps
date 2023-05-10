@@ -307,4 +307,21 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @return True si le mode est consultation, false sinon
      */
     public boolean estEnModeConsultation(){return modeConsultation;}
+
+    /**
+     * Passe le processeur en vue des détails au processeur suivant
+     */
+    public void suivant(){
+        int indice = listeProcesseurs.indexOf(processeurEnVueDetails);
+        processeurEnVueDetails = listeProcesseurs.get((indice+1) % listeProcesseurs.size());
+    }
+
+
+    /**
+     * Passe le processeur en vue des détails au processeur précédent
+     */
+    public void precedent(){
+        int indice = listeProcesseurs.indexOf(processeurEnVueDetails);
+        processeurEnVueDetails = listeProcesseurs.get((indice-1+listeProcesseurs.size()) % listeProcesseurs.size());
+    }
 }

@@ -16,9 +16,9 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("vueGenerale.fxml"));
         VueGenerale vge = new VueGenerale(collec);
         VueGlobale cvg = new VueGlobale(collec);
-        VueFenetreAjout vfa = new VueFenetreAjout(collec);
         VueVignettes cvv = new VueVignettes(collec);
         VueDetails cvd = new VueDetails(collec);
+        VueFenetreAjout vfa = new VueFenetreAjout(collec);
 
         loader.setControllerFactory(iC->{
             if (iC.equals(VueGlobale.class)) return cvg;
@@ -31,8 +31,8 @@ public class Main extends Application {
 
         Parent root = loader.load();
         primaryStage.setTitle("Hello World");
-        primaryStage.setMinHeight(500);
-        primaryStage.setMinWidth(800);
+        primaryStage.setMinHeight(600);
+        primaryStage.setMinWidth(900);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

@@ -17,8 +17,7 @@ public class VueDetails implements Observateur {
     private AnchorPane vueDetails;
 
     @FXML
-    private Button boutonHome;
-
+    private Button boutonHome, boutonArriere, boutonAvant;
 
     @FXML
     private Label labelMarque, labelModele, labelFrequence, labelCoeurs, labelThreads, labelSocket, labelAnnee, labelCache;
@@ -30,6 +29,16 @@ public class VueDetails implements Observateur {
 
     public void passerEnVueGenerale(){
         collection.passerEnVueGenerale();
+        collection.notifierObservateurs();
+    }
+
+    public void processeurSuivant(){
+        collection.suivant();
+        collection.notifierObservateurs();
+    }
+
+    public void processeurPredecent(){
+        collection.precedent();
         collection.notifierObservateurs();
     }
 
