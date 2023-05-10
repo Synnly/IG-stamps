@@ -11,7 +11,7 @@
            <fx:include fx:id="vueVignettes" source="vueVignettes.fxml" />
            <fx:include fx:id="vueFenetreAjout" source="vueFenetreAjout.fxml" />
        </StackPane>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="boutonAjouter" mnemonicParsing="false" onAction="#ajouter" prefHeight="64.0" prefWidth="64.0" style="-fx-padding: 0;">
                <graphic>

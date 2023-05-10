@@ -27,118 +27,287 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="84.0">
+      <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="84.0">
          <children>
-            <ImageView fx:id="vignetteProcesseur" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin></ImageView>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+            <HBox fx:id="vueDetailsEdition" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="visibility: true;">
                <children>
-                  <VBox maxWidth="1.7976931348623157E308" spacing="3.0" VBox.vgrow="NEVER">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                      <children>
-                        <Label text="Marque :">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <Label fx:id="labelMarque" text="Label">
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin></Label>
+                        <ImageView fx:id="vignetteProcesseur1" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="boutonModifierImage" mnemonicParsing="false" onAction="#choisirImage" text="Modifier l'image" />
                      </children>
                   </VBox>
-                  <VBox layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Modele :">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <Label fx:id="labelModele" text="Label" wrapText="true">
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin></Label>
+                        <VBox maxWidth="1.7976931348623157E308" spacing="3.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Marque :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="champMarqueEdition" promptText="Intel, AMD, ...">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin></TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Modele :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="champModeleEdition" promptText="Core i7-7700, Ryzen 5 3600, ...">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Frequence :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="champFrequenceEdition" promptText="3.70, ...">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Socket :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="champSocketEdition" promptText="LGA1151, ...">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="# de coeurs :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="champCoeursEdition" promptText="6, 8, ...">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="# de threads :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="champThreadsEdition" promptText="12, 16, ...">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Cache :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="champCacheEdition" promptText="32, ...">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="58.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Annee :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="champAnneeEdition" promptText="2022, ...">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" spacing="20.0">
+                           <children>
+                              <Button fx:id="boutonAnnulerEdition" cancelButton="true" mnemonicParsing="false" onAction="#annulerEdition" style="-fx-background-color: f77;" text="Annuler">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="boutonEnregistrer" defaultButton="true" mnemonicParsing="false" onAction="#enregistrer" style="-fx-background-color: #6beb9a;" text="Enregistrer">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </HBox>
                      </children>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
                   </VBox>
-                  <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="50.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="vueDetailsConsultation" alignment="CENTER" layoutX="10.0" layoutY="-34.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="visibility: false;">
+               <children>
+                  <ImageView fx:id="vignetteProcesseur" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Frequence :">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <Label fx:id="labelFrequence" text="Label">
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin></Label>
-                     </children>
-                  </VBox>
-                  <VBox maxWidth="1.7976931348623157E308" spacing="3.0">
-                     <children>
-                        <Label text="Socket :">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <Label fx:id="labelSocket" text="Label">
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin></Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
-                     <children>
-                        <Label text="# de coeurs :">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <Label fx:id="labelCoeurs" text="NbCoeurs">
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin></Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
-                     <children>
-                        <Label text="# de threads :">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <Label fx:id="labelThreads" text="Label">
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin></Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
-                     <children>
-                        <Label text="Cache :">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <Label fx:id="labelCache" text="Label">
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin></Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="58.0" maxWidth="1.7976931348623157E308" spacing="3.0">
-                     <children>
-                        <Label text="Annee :">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <Label fx:id="labelAnnee" text="Label">
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin></Label>
+                        <VBox maxWidth="1.7976931348623157E308" spacing="3.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Marque :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelMarque" text="Label">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Modele :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelModele" text="Label" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Frequence :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelFrequence" text="Label">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Socket :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelSocket" text="Label">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="# de coeurs :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelCoeurs" text="NbCoeurs">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="# de threads :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelThreads" text="Label">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Cache :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelCache" text="Label">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="58.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                           <children>
+                              <Label text="Annee :">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelAnnee" text="Label">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children>
-            </VBox>
+               <padding>
+                  <Insets bottom="10.0" left="50.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" left="50.0" right="10.0" top="10.0" />
-         </padding>
-      </HBox>
-      <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      </StackPane>
+      <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="200.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Button fx:id="boutonArriere" mnemonicParsing="false" onAction="#processeurPredecent" style="-fx-padding: 2;">
                <graphic>

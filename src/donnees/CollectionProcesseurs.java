@@ -20,6 +20,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     private boolean modeConsultation = true;
     private boolean fenetreAjoutEstVisible = false;
     private int tailleImage = 300;
+    private boolean enCoursDeModification = false;
 
     /**
      * Constructeur de la collection de processeurs
@@ -335,7 +336,6 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         processeurEnVueDetails = listeProcesseurs.get((indice+1) % listeProcesseurs.size());
     }
 
-
     /**
      * Passe le processeur en vue des détails au processeur précédent
      */
@@ -345,4 +345,10 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     }
 
     public int getTailleImage(){return tailleImage;}
+
+    public boolean estEnCoursDeModification() {return enCoursDeModification;}
+
+    public void commencerModifications() {enCoursDeModification = true;}
+
+    public void terminerModifications() {enCoursDeModification = false;}
 }
