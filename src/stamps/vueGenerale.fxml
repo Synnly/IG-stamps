@@ -15,9 +15,9 @@
                </Menu>
                <Menu mnemonicParsing="false" text="Modes">
                    <items>
-                       <MenuItem fx:id="menuEdition" mnemonicParsing="false" onAction="#modeEdition" text="Edition" />
-                       <MenuItem fx:id="menuConsultation" mnemonicParsing="false" onAction="#modeConsultation" text="Consultation" />
-                       <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter" />
+                       <MenuItem fx:id="menuEdition" mnemonicParsing="false" onAction="#modeEdition" text="Edition" accelerator="E"/>
+                       <MenuItem fx:id="menuConsultation" mnemonicParsing="false" onAction="#modeConsultation" text="Consultation" accelerator="C" />
+                       <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter" accelerator="Esc"/>
                    </items>
                </Menu>
            </menus>

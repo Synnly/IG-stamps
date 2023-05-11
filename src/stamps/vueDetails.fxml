@@ -96,7 +96,7 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
                            <children>
-                              <Label text="# de coeurs :">
+                              <Label text="Nombre de coeurs :">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -110,7 +110,7 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
                            <children>
-                              <Label text="# de threads :">
+                              <Label text="Nombre de threads :">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -244,7 +244,7 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
                            <children>
-                              <Label text="# de coeurs :">
+                              <Label text="Nombre de coeurs :">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -258,7 +258,7 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
                            <children>
-                              <Label text="# de threads :">
+                              <Label text="Nombre de threads :">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
