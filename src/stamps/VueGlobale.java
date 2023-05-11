@@ -4,6 +4,7 @@ import donnees.CollectionProcesseurs;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.*;
 import mvc.Observateur;
@@ -21,9 +22,17 @@ public class VueGlobale implements Observateur{
     @FXML
     private Button boutonTrier;
 
+    @FXML
+    private Label labelNbProcesseurs;
+
     public VueGlobale(CollectionProcesseurs collec){
         collec.ajouterObservateur(this);
         collection = collec;
+    }
+
+    @FXML
+    public void initialize(){
+        labelNbProcesseurs.textProperty().bind(collection.getPropertyNbProcesseurs().asString());
     }
 
     /**

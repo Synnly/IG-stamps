@@ -11,8 +11,23 @@
            <fx:include fx:id="vueVignettes" source="vueVignettes.fxml" />
            <fx:include fx:id="vueFenetreAjout" source="vueFenetreAjout.fxml" />
        </StackPane>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" BorderPane.alignment="CENTER">
          <children>
+         <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="5.0" style="-fx-background-color: F4F4F4; -fx-background-radius: 5;">
+            <children>
+               <Label fx:id="labelNbProcesseurs" text="Label" />
+               <Label text="processeurs" />
+            </children>
+            <HBox.margin>
+               <Insets right="-5.0" />
+            </HBox.margin>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </HBox>
             <Button fx:id="boutonAjouter" mnemonicParsing="false" onAction="#ajouter" prefHeight="64.0" prefWidth="64.0" style="-fx-padding: 0;">
                <graphic>
                   <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">

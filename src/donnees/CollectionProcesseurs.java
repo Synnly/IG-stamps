@@ -1,5 +1,7 @@
 package donnees;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.Image;
 import mvc.SujetObserve;
 
@@ -21,6 +23,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     private boolean fenetreAjoutEstVisible = false;
     private int tailleImage = 300;
     private boolean enCoursDeModification = false;
+    private IntegerProperty nbProcesseurs;
 
     /**
      * Constructeur de la collection de processeurs
@@ -37,6 +40,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         listeAnnees = new ArrayList<>();
         petitesImages = new HashMap<>();
         images = new HashMap<>();
+        nbProcesseurs = new SimpleIntegerProperty(0);
     }
 
     /**
@@ -46,6 +50,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void ajouterProcesseur(Processeur processeur) {
         estTrie = false;
         listeProcesseurs.add(processeur);
+        nbProcesseurs.set(nbProcesseurs.get()+1);
 
         // Ajout des tags
         ajouterMarque(processeur.getMarque());
@@ -90,6 +95,9 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param processeur Le processeur à supprimer
      */
     public void supprimerProcesseur(Processeur processeur) {
+        if (listeProcesseurs.contains(processeur)){
+            nbProcesseurs.setValue(nbProcesseurs.getValue() - 1);
+        }
         listeProcesseurs.removeIf(p -> p.getIdentifiant() == processeur.getIdentifiant());
     }
 
@@ -121,13 +129,6 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
             triCroissant = true;
             estTrie = true;
         }
-    }
-
-    /**
-     * @return Le nombre de processeurs dans la collection
-     */
-    public int getNbProcesseurs() {
-        return listeProcesseurs.size();
     }
 
     /**
@@ -351,4 +352,8 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void commencerModifications() {enCoursDeModification = true;}
 
     public void terminerModifications() {enCoursDeModification = false;}
+
+    public IntegerProperty getPropertyNbProcesseurs() {return nbProcesseurs;}
+
+    public int getNbProcesseurs() {return nbProcesseurs.intValue();}
 }
