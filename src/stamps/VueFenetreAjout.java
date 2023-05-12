@@ -55,5 +55,8 @@ public class VueFenetreAjout implements Observateur {
     }
 
     @Override
-    public void reagir() {fenetreAjout.setVisible(collec.fenetreAjoutEstVisible());}
+    public void reagir() {
+        fenetreAjout.setVisible(collec.fenetreAjoutEstVisible());
+        champMarque.requestFocus();
+    }
 }
