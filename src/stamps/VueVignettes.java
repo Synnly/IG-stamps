@@ -4,10 +4,7 @@ import donnees.CollectionProcesseurs;
 import donnees.Processeur;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.OverrunStyle;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -21,9 +18,19 @@ public class VueVignettes implements Observateur {
     @FXML
     private FlowPane panneauVignettes;
 
+    @FXML
+    private ScrollPane scrollPane;
+
     public VueVignettes(CollectionProcesseurs collec){
         collec.ajouterObservateur(this);
         collection = collec;
+    }
+
+    @FXML
+    public void initialize(){
+        scrollPane.viewportBoundsProperty().addListener((observable, oldValue, newValue) -> {
+            panneauVignettes.setPrefWidth(newValue.getWidth());
+        });
     }
 
     @Override
@@ -73,6 +80,7 @@ public class VueVignettes implements Observateur {
                     collection.notifierObservateurs();
                 }
             });
+            vignette.setAlignment(javafx.geometry.Pos.CENTER);
             vignette.getChildren().addAll(etiquetteMarque, vueImage, etiquetteModele);
 
             panneauVignettes.getChildren().add(vignette);
