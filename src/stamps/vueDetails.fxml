@@ -309,7 +309,7 @@
       </StackPane>
       <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="200.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="boutonArriere" mnemonicParsing="false" onAction="#processeurPredecent" style="-fx-padding: 2;">
+            <Button fx:id="boutonPrecedent" mnemonicParsing="false" onAction="#processeurPredecent" style="-fx-padding: 2;">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -318,9 +318,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#processeurSuivant" style="-fx-padding: 2;">
+            <Button fx:id="boutonSuivant" mnemonicParsing="false" onAction="#processeurSuivant" style="-fx-padding: 2;">
                <graphic>
-                  <ImageView fx:id="boutonSuivant" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ressources/avant.png" />
                      </image>

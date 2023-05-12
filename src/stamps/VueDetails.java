@@ -26,7 +26,7 @@ public class VueDetails implements Observateur {
     private AnchorPane vueDetails;
 
     @FXML
-    private Button boutonHome, boutonArriere, boutonAvant, boutonEnregister, boutonAnnulerEdition, boutonModifierImage;
+    private Button boutonHome, boutonPrecedent, boutonSuivant, boutonEnregister, boutonAnnulerEdition, boutonModifierImage;
 
     @FXML
     private Label labelMarque, labelModele, labelFrequence, labelCoeurs, labelThreads, labelSocket, labelAnnee, labelCache;
@@ -43,6 +43,12 @@ public class VueDetails implements Observateur {
     public VueDetails(CollectionProcesseurs collec){
         collec.ajouterObservateur(this);
         collection = collec;
+    }
+
+    @FXML
+    public void initialize(){
+        boutonPrecedent.disableProperty().bind(collection.getIndiceProcesseurEnVueDetailsProperty().isEqualTo(0));
+        boutonSuivant.disableProperty().bind(collection.getIndiceProcesseurEnVueDetailsProperty().isEqualTo(collection.getPropertyNbProcesseurs().subtract(1)));
     }
 
     /**

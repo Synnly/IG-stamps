@@ -24,6 +24,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     private int tailleImage = 300;
     private boolean enCoursDeModification = false;
     private IntegerProperty nbProcesseurs;
+    private IntegerProperty indiceProcesseurEnVueDetails;
 
     /**
      * Constructeur de la collection de processeurs
@@ -41,6 +42,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         petitesImages = new HashMap<>();
         images = new HashMap<>();
         nbProcesseurs = new SimpleIntegerProperty(0);
+        indiceProcesseurEnVueDetails = new SimpleIntegerProperty(0);
     }
 
     /**
@@ -330,19 +332,25 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public boolean estEnModeConsultation(){return modeConsultation;}
 
     /**
-     * Passe le processeur en vue des détails au processeur suivant
+     * Passe le processeur en vue des détails au processeur suivant s'il y en a un après lui dans la liste
      */
     public void suivant(){
-        int indice = listeProcesseurs.indexOf(processeurEnVueDetails);
-        processeurEnVueDetails = listeProcesseurs.get((indice+1) % listeProcesseurs.size());
+        if (listeProcesseurs.indexOf(processeurEnVueDetails) < getNbProcesseurs()-1) {
+            int indice = listeProcesseurs.indexOf(processeurEnVueDetails);
+            processeurEnVueDetails = listeProcesseurs.get(indice + 1);
+            setIndiceProcesseurEnVueDetailsProperty(indice + 1);
+        }
     }
 
     /**
-     * Passe le processeur en vue des détails au processeur précédent
+     * Passe le processeur en vue des détails au processeur précédent s'il y en a un avant lui dans la liste
      */
     public void precedent(){
-        int indice = listeProcesseurs.indexOf(processeurEnVueDetails);
-        processeurEnVueDetails = listeProcesseurs.get((indice-1+listeProcesseurs.size()) % listeProcesseurs.size());
+        if(listeProcesseurs.indexOf(processeurEnVueDetails) > 0) {
+            int indice = listeProcesseurs.indexOf(processeurEnVueDetails);
+            processeurEnVueDetails = listeProcesseurs.get(indice - 1);
+            setIndiceProcesseurEnVueDetailsProperty(indice - 1);
+        }
     }
 
     public int getTailleImage(){return tailleImage;}
@@ -356,4 +364,10 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public IntegerProperty getPropertyNbProcesseurs() {return nbProcesseurs;}
 
     public int getNbProcesseurs() {return nbProcesseurs.intValue();}
+
+    public IntegerProperty getIndiceProcesseurEnVueDetailsProperty (){return indiceProcesseurEnVueDetails;}
+
+    public int getIndiceProcesseurEnVueDetails (){return indiceProcesseurEnVueDetails.intValue();}
+
+    public void setIndiceProcesseurEnVueDetailsProperty (int indice){indiceProcesseurEnVueDetails.setValue(indice);}
 }
