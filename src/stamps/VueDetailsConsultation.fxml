@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<HBox fx:id="vueDetailsConsultation" alignment="CENTER" layoutX="10.0" layoutY="-34.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="visibility: false;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.VueDetailsConsultation">
+    <children>
+        <ImageView fx:id="vignetteProcesseur" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+            <HBox.margin>
+                <Insets />
+            </HBox.margin>
+        </ImageView>
+        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+            <children>
+                <VBox maxWidth="1.7976931348623157E308" spacing="3.0" VBox.vgrow="NEVER">
+                    <children>
+                        <Label text="Marque :">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="labelMarque" text="Label">
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                    <children>
+                        <Label text="Modele :">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="labelModele" text="Label" wrapText="true">
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                    <children>
+                        <Label text="Frequence :">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="labelFrequence" text="Label">
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox maxWidth="1.7976931348623157E308" spacing="3.0">
+                    <children>
+                        <Label text="Socket :">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="labelSocket" text="Label">
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                    <children>
+                        <Label text="Nombre de coeurs :">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="labelCoeurs" text="NbCoeurs">
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox layoutX="10.0" layoutY="26.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                    <children>
+                        <Label text="Nombre de threads :">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="labelThreads" text="Label">
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                    <children>
+                        <Label text="Cache :">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="labelCache" text="Label">
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox layoutX="10.0" layoutY="58.0" maxWidth="1.7976931348623157E308" spacing="3.0">
+                    <children>
+                        <Label text="Annee :">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="labelAnnee" text="Label">
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="50.0" right="10.0" top="10.0" />
+    </padding>
+</HBox>

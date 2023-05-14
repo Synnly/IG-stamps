@@ -19,6 +19,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     private boolean estTrie = false;
     private boolean enVueDetails = false;
     private Processeur processeurEnVueDetails = null;
+    private Image imageProcesseurEnVueDetails = null;
     private boolean modeConsultation = true;
     private boolean fenetreAjoutEstVisible = false;
     private int tailleImage = 300;
@@ -54,7 +55,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         listeProcesseurs.add(processeur);
         nbProcesseurs.set(nbProcesseurs.get()+1);
 
-        // Ajout des tags
+        // Ajout des stamps.tags
         ajouterMarque(processeur.getMarque());
         ajouterModele(processeur.getModele());
         ajouterSocket(processeur.getSocket());
@@ -256,6 +257,9 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     }
 
     @Override
+    /**
+     * @return Un itérateur sur la collection de processeurs
+     */
     public Iterator<Processeur> iterator() {
         return listeProcesseurs.iterator();
     }
@@ -308,7 +312,10 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * Modifie le processeur inspecté dans la vue des détails
      * @param proc Le processeur à inspecter
      */
-    public void inspecterProcesseur(Processeur proc){processeurEnVueDetails = proc;}
+    public void inspecterProcesseur(Processeur proc){
+        processeurEnVueDetails = proc;
+        setImageProcesseurEnVueDetails(getImage(proc));
+    }
 
     /**
      * @return Le processeur inspecté dans la vue des détails
@@ -337,7 +344,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void suivant(){
         if (listeProcesseurs.indexOf(processeurEnVueDetails) < getNbProcesseurs()-1) {
             int indice = listeProcesseurs.indexOf(processeurEnVueDetails);
-            processeurEnVueDetails = listeProcesseurs.get(indice + 1);
+            inspecterProcesseur(listeProcesseurs.get(indice + 1));
             setIndiceProcesseurEnVueDetailsProperty(indice + 1);
         }
     }
@@ -348,26 +355,160 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void precedent(){
         if(listeProcesseurs.indexOf(processeurEnVueDetails) > 0) {
             int indice = listeProcesseurs.indexOf(processeurEnVueDetails);
-            processeurEnVueDetails = listeProcesseurs.get(indice - 1);
+            inspecterProcesseur(listeProcesseurs.get(indice - 1));
             setIndiceProcesseurEnVueDetailsProperty(indice - 1);
         }
     }
 
+    /**
+     * @return La taille de l'image à afficher dans la vue des détails
+     */
     public int getTailleImage(){return tailleImage;}
 
+    /**
+     * @return true si des modifications sont en cours, false sinon
+     */
     public boolean estEnCoursDeModification() {return enCoursDeModification;}
 
+    /**
+     * Démarre les modifications
+     */
     public void commencerModifications() {enCoursDeModification = true;}
 
+    /**
+     * Termine les modifications
+     */
     public void terminerModifications() {enCoursDeModification = false;}
 
+    /**
+     * @return La propriété du nombre de processeurs
+     */
     public IntegerProperty getPropertyNbProcesseurs() {return nbProcesseurs;}
 
+    /**
+     * @return Le nombre de processeurs
+     */
     public int getNbProcesseurs() {return nbProcesseurs.intValue();}
 
+    /**
+     * @return La propriété de l'indice du processeur en vue des détails
+     */
     public IntegerProperty getIndiceProcesseurEnVueDetailsProperty (){return indiceProcesseurEnVueDetails;}
 
+    /**
+     * @return L'indice du processeur en vue des détails
+     */
     public int getIndiceProcesseurEnVueDetails (){return indiceProcesseurEnVueDetails.intValue();}
 
+    /**
+     * Modifie l'indice du processeur en vue des détails
+     * @param indice Le nouvel indice
+     */
     public void setIndiceProcesseurEnVueDetailsProperty (int indice){indiceProcesseurEnVueDetails.setValue(indice);}
+
+    /**
+     * @return La liste des marques présentes dans la base de données
+     */
+    public List<String> getListeMarques() {return listeMarques;}
+
+    /**
+     * @return La liste des modeles présents dans la base de données
+     */
+    public List<String> getListeModeles() {return listeModeles;}
+
+    /**
+     * @return La liste des sockets présents dans la base de données
+     */
+    public List<String> getListeSockets() {return listeSockets;}
+
+    /**
+     * @return La liste des fréquences présentes dans la base de données
+     */
+    public List<Float> getListeFrequence() {return listeFrequences;}
+
+    /**
+     * @return La liste des nombres de coeurs présents dans la base de données
+     */
+    public List<Integer> getListeNbCoeurs() {return listeNbCoeurs;}
+
+    /**
+     * @return La liste des nombres de threads présents dans la base de données
+     */
+    public List<Integer> getListeNbThreads() {return listeNbThreads;}
+
+    /**
+     * @return La liste des caches présents dans la base de données
+     */
+    public List<Integer> getListeCache() {return listeCaches;}
+
+    /**
+     * @return La liste des années présentes dans la base de données
+     */
+    public List<Integer> getListeAnnees() {return listeAnnees;}
+
+    /**
+     * @return La liste des fréquences en chaine de caractères
+     */
+    public List<String> getlisteFrequenceAsString() {
+    	List<String> listeFrequenceAsString = new ArrayList<>();
+    	for (Float f : listeFrequences) {
+    		listeFrequenceAsString.add(f.toString());
+    	}
+    	return listeFrequenceAsString;
+    }
+
+    /**
+     * @return La liste des nombres de coeurs en chaine de caractères
+     */
+    public List<String> getlisteNbCoeursAsString() {
+    	List<String> listeNbCoeursAsString = new ArrayList<>();
+    	for (Integer i : listeNbCoeurs) {
+    		listeNbCoeursAsString.add(i.toString());
+    	}
+    	return listeNbCoeursAsString;
+    }
+
+    /**
+     * @return La liste des nombres de threads en chaine de caractères
+     */
+    public List<String> getlisteNbThreadsAsString() {
+    	List<String> listeNbThreadsAsString = new ArrayList<>();
+    	for (Integer i : listeNbThreads) {
+    		listeNbThreadsAsString.add(i.toString());
+    	}
+    	return listeNbThreadsAsString;
+    }
+
+    /**
+     * @return La liste des caches en chaine de caractères
+     */
+    public List<String> getlisteCacheAsString() {
+    	List<String> listeCacheAsString = new ArrayList<>();
+    	for (Integer i : listeCaches) {
+    		listeCacheAsString.add(i.toString());
+    	}
+    	return listeCacheAsString;
+    }
+
+    /**
+     * @return La liste des années en chaine de caractères
+     */
+    public List<String> getlisteAnneesAsString() {
+    	List<String> listeAnneesAsString = new ArrayList<>();
+    	for (Integer i : listeAnnees) {
+    		listeAnneesAsString.add(i.toString());
+    	}
+    	return listeAnneesAsString;
+    }
+
+    /**
+     * @return L'image du processeur en vue des détails
+     */
+    public Image getImageProcesseurEnVueDetails() {return imageProcesseurEnVueDetails;}
+
+    /**
+     * Modifie l'image du processeur en vue des détails
+     * @param image La nouvelle image
+     */
+    public void setImageProcesseurEnVueDetails(Image image) {imageProcesseurEnVueDetails = image;}
 }
