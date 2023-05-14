@@ -43,6 +43,8 @@ public class VueDetails implements Observateur {
      */
     public void processeurSuivant(){
         collection.suivant();
+        collection.terminerModifications();
+        collection.modeConsultation();
         collection.notifierObservateurs();
     }
 
@@ -51,6 +53,8 @@ public class VueDetails implements Observateur {
      */
     public void processeurPredecent(){
         collection.precedent();
+        collection.terminerModifications();
+        collection.modeConsultation();
         collection.notifierObservateurs();
     }
 
