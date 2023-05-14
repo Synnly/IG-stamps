@@ -165,6 +165,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void ajouterMarque(String marque) {
         if (!listeMarques.contains(marque)) {
             listeMarques.add(marque);
+            listeMarques.sort(String::compareToIgnoreCase);
         }
     }
 
@@ -175,6 +176,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void ajouterModele(String modele) {
         if (!listeModeles.contains(modele)) {
             listeModeles.add(modele);
+            listeModeles.sort(String::compareToIgnoreCase);
         }
     }
 
@@ -185,6 +187,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void ajouterSocket(String socket) {
         if (!listeSockets.contains(socket)) {
             listeSockets.add(socket);
+            listeSockets.sort(String::compareToIgnoreCase);
         }
     }
 
@@ -195,6 +198,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void ajouterFrequence(float frequence) {
         if (!listeFrequences.contains(frequence)) {
             listeFrequences.add(frequence);
+            listeFrequences.sort(Float::compareTo);
         }
     }
 
@@ -205,6 +209,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void ajouterNbCoeurs(int nbCoeurs) {
         if (!listeNbCoeurs.contains(nbCoeurs)) {
             listeNbCoeurs.add(nbCoeurs);
+            listeNbCoeurs.sort(Integer::compareTo);
         }
     }
 
@@ -215,6 +220,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void ajouterNbThreads(int nbThreads) {
         if (!listeNbThreads.contains(nbThreads)) {
             listeNbThreads.add(nbThreads);
+            listeNbThreads.sort(Integer::compareTo);
         }
     }
 
@@ -225,6 +231,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void ajouterCache(int cache) {
         if (!listeCaches.contains(cache)) {
             listeCaches.add(cache);
+            listeCaches.sort(Integer::compareTo);
         }
     }
 
@@ -235,6 +242,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public void ajouterAnnee(int annee) {
         if (!listeAnnees.contains(annee)) {
             listeAnnees.add(annee);
+            listeAnnees.sort(Integer::compareTo);
         }
     }
 
