@@ -1,10 +1,15 @@
 package donnees;
 
+import com.google.gson.Gson;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.Image;
 import mvc.SujetObserve;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.*;
 
 public class CollectionProcesseurs extends SujetObserve implements Iterable<Processeur>{
@@ -139,7 +144,18 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param chemin Le chemin du fichier
      */
     public void exporterCollection(String chemin) {
-        // TODO
+        Gson gson = new Gson();
+        File fichier = new File(chemin+"/collection.json");
+        FileWriter writer;
+        try {
+            fichier.createNewFile();
+            writer = new FileWriter(fichier);
+            writer.write(gson.toJson(listeProcesseurs));
+            writer.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
