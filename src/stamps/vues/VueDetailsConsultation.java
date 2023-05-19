@@ -1,13 +1,12 @@
-package stamps;
+package stamps.vues;
 
-import donnees.CollectionProcesseurs;
-import donnees.Processeur;
+import stamps.donnees.CollectionProcesseurs;
+import stamps.donnees.Processeur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import mvc.Observateur;
+import stamps.mvc.Observateur;
 
 public class VueDetailsConsultation implements Observateur {
 

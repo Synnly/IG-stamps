@@ -1,12 +1,12 @@
-package stamps;
+package stamps.vues;
 
-import donnees.Processeur;
+import stamps.donnees.Processeur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import mvc.Observateur;
-import donnees.CollectionProcesseurs;
+import stamps.mvc.Observateur;
+import stamps.donnees.CollectionProcesseurs;
 
 public class VueDetails implements Observateur {
 

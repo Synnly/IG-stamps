@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="vueGenerale" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.VueGenerale">
+<AnchorPane fx:id="vueGenerale" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.vues.VueGenerale">
    <children>
        <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
            <menus>
@@ -23,8 +23,8 @@
            </menus>
        </MenuBar>
        <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
-           <fx:include source="vueDetails.fxml" />
-           <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="vueGlobale.fxml" />
+           <fx:include source="VueDetails.fxml" />
+           <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="VueGlobale.fxml" />
        </StackPane>
 
    </children>

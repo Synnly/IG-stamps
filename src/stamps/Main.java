@@ -1,11 +1,12 @@
 package stamps;
 
-import donnees.CollectionProcesseurs;
+import stamps.donnees.CollectionProcesseurs;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import stamps.vues.*;
 
 public class Main extends Application {
 
@@ -13,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         CollectionProcesseurs collec = new CollectionProcesseurs();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("vueGenerale.fxml"));
+        loader.setLocation(getClass().getResource("vues/VueGenerale.fxml"));
         VueGenerale vge = new VueGenerale(collec);
         VueGlobale vg = new VueGlobale(collec);
         VueVignettes vv = new VueVignettes(collec);
@@ -44,7 +45,6 @@ public class Main extends Application {
 
         collec.notifierObservateurs();
     }
-
 
     public static void main(String[] args) {
         launch(args);

@@ -1,13 +1,11 @@
-package stamps;
+package stamps.vues;
 
-import donnees.CollectionProcesseurs;
-import javafx.application.Platform;
+import stamps.donnees.CollectionProcesseurs;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.*;
-import mvc.Observateur;
+import stamps.mvc.Observateur;
 
 public class VueGlobale implements Observateur{
 

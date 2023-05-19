@@ -9,7 +9,7 @@
 <?import javafx.scene.text.*?>
 
 
-<HBox fx:id="vueDetailsConsultation" alignment="CENTER" layoutX="10.0" layoutY="-34.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="visibility: false;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.VueDetailsConsultation">
+<HBox fx:id="vueDetailsConsultation" alignment="CENTER" layoutX="10.0" layoutY="-34.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="visibility: false;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.vues.VueDetailsConsultation">
     <children>
         <ImageView fx:id="vignetteProcesseur" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
             <HBox.margin>

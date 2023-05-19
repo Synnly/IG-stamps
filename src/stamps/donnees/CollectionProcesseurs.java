@@ -1,4 +1,4 @@
-package donnees;
+package stamps.donnees;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,7 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.Image;
-import mvc.SujetObserve;
+import stamps.mvc.SujetObserve;
 
 import java.io.File;
 import java.io.FileReader;
@@ -23,16 +23,16 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     private List<Float> listeFrequences;
     private HashMap<Processeur, Image> petitesImages;
     private HashMap<Processeur, Image> images;
+    private int tailleImage = 300;
     private boolean triCroissant = true;
     private boolean estTrie = false;
     private boolean enVueDetails = false;
+    private boolean modeConsultation = true;
+    private boolean fenetreAjoutEstVisible = false;
+    private boolean enCoursDeModification = false;
     private Processeur processeurEnVueDetails = null;
     private Image imageProcesseurEnVueDetails = null;
     private String cheminImageProcesseurEnVueDetails = null;
-    private boolean modeConsultation = true;
-    private boolean fenetreAjoutEstVisible = false;
-    private int tailleImage = 300;
-    private boolean enCoursDeModification = false;
     private IntegerProperty nbProcesseurs;
     private IntegerProperty indiceProcesseurEnVueDetails;
 
@@ -103,6 +103,14 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     }
 
     /**
+     * @param identifiant L'identifiant du processeur
+     * @return Le processeur correspondant à l'identifiant
+     */
+    public Processeur getProcesseur(int identifiant) {
+        return listeProcesseurs.get(identifiant);
+    }
+
+    /**
      * Supprime le processeur passé en paramètre
      * @param processeur Le processeur à supprimer
      */
@@ -154,13 +162,10 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         try {
             fichier.createNewFile();
             writer = new FileWriter(fichier);
-            System.out.println(gson.toJson(listeProcesseurs));
             writer.write(gson.toJson(listeProcesseurs));
             writer.close();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        catch (IOException ignored) {}
     }
 
     /**
@@ -192,7 +197,6 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
             // Ajout des processeurs
             for(Processeur p : nouvelleListe) {
                 ajouterProcesseur(p);
-                System.out.println(p.getCheminImage());
                 image = new Image(p.getCheminImage(), tailleImage, tailleImage, true, true);
                 petiteImage = new Image(p.getCheminImage(),100, 100, true, true);
                 ajouterImage(image, p);
@@ -200,17 +204,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
             }
             notifierObservateurs();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * @param identifiant L'identifiant du processeur
-     * @return Le processeur correspondant à l'identifiant
-     */
-    public Processeur getProcesseur(int identifiant) {
-        return listeProcesseurs.get(identifiant);
+        catch (IOException ignored) {}
     }
 
     /**
@@ -329,6 +323,20 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     }
 
     /**
+     * Retourne l'image associée au processeur
+     * @param proc Le processeur
+     * @return L'image associée au processeur
+     */
+    public Image getImage(Processeur proc){return images.get(proc);}
+
+    /**
+     * Retourne la petite image associée au processeur
+     * @param proc Le processeur
+     * @return L'image associée au processeur
+     */
+    public Image getPetiteImage(Processeur proc){return petitesImages.get(proc);}
+
+    /**
      * @param proc Le processeur
      * @return L'image associée au processeur
      */
@@ -336,10 +344,26 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         return proc.getCheminImage();
     }
 
-    @Override
     /**
-     * @return Un itérateur sur la collection de processeurs
+     * @return La taille de l'image à afficher dans la vue des détails
      */
+    public int getTailleImage(){return tailleImage;}
+
+    /**
+     * @return Le processeur inspecté dans la vue des détails
+     */
+    public Processeur getProcesseurEnVueDetails(){return processeurEnVueDetails;}
+
+    /**
+     * Modifie le processeur inspecté dans la vue des détails
+     * @param proc Le processeur à inspecter
+     */
+    public void inspecterProcesseur(Processeur proc){
+        processeurEnVueDetails = proc;
+        setImageProcesseurEnVueDetails(getImage(proc));
+    }
+
+    @Override
     public Iterator<Processeur> iterator() {
         return listeProcesseurs.iterator();
     }
@@ -360,20 +384,6 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public boolean fenetreAjoutEstVisible(){return fenetreAjoutEstVisible;}
 
     /**
-     * Retourne l'image associée au processeur
-     * @param proc Le processeur
-     * @return L'image associée au processeur
-     */
-    public Image getImage(Processeur proc){return images.get(proc);}
-
-    /**
-     * Retourne la petite image associée au processeur
-     * @param proc Le processeur
-     * @return L'image associée au processeur
-     */
-    public Image getPetiteImage(Processeur proc){return petitesImages.get(proc);}
-
-    /**
      * @return true si la vue des details est visible, false sinon
      */
     public boolean estEnVueDetails(){return enVueDetails;}
@@ -387,20 +397,6 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * Passe la vue en vue des détails
      */
     public void passerEnVueDetails(){enVueDetails = true;}
-
-    /**
-     * Modifie le processeur inspecté dans la vue des détails
-     * @param proc Le processeur à inspecter
-     */
-    public void inspecterProcesseur(Processeur proc){
-        processeurEnVueDetails = proc;
-        setImageProcesseurEnVueDetails(getImage(proc));
-    }
-
-    /**
-     * @return Le processeur inspecté dans la vue des détails
-     */
-    public Processeur getProcesseurEnVueDetails(){return processeurEnVueDetails;}
 
     /**
      * Passe en mode consultation
@@ -441,11 +437,6 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     }
 
     /**
-     * @return La taille de l'image à afficher dans la vue des détails
-     */
-    public int getTailleImage(){return tailleImage;}
-
-    /**
      * @return true si des modifications sont en cours, false sinon
      */
     public boolean estEnCoursDeModification() {return enCoursDeModification;}
@@ -466,14 +457,14 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     public IntegerProperty getPropertyNbProcesseurs() {return nbProcesseurs;}
 
     /**
-     * @return Le nombre de processeurs
-     */
-    public int getNbProcesseurs() {return nbProcesseurs.intValue();}
-
-    /**
      * @return La propriété de l'indice du processeur en vue des détails
      */
     public IntegerProperty getIndiceProcesseurEnVueDetailsProperty (){return indiceProcesseurEnVueDetails;}
+
+    /**
+     * @return Le nombre de processeurs
+     */
+    public int getNbProcesseurs() {return nbProcesseurs.intValue();}
 
     /**
      * @return L'indice du processeur en vue des détails
@@ -592,7 +583,14 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      */
     public void setImageProcesseurEnVueDetails(Image image) {imageProcesseurEnVueDetails = image;}
 
+    /**
+     * Modifie le chemin de l'image du processeur en vue des détails
+     * @param chemin Le nouveau chemin
+     */
     public void setCheminImageProcesseurEnVueDetails(String chemin) {cheminImageProcesseurEnVueDetails = chemin;}
 
+    /**
+     * @return Le chemin de l'image du processeur en vue des détails
+     */
     public String getCheminImageProcesseurEnVueDetails() {return cheminImageProcesseurEnVueDetails;}
 }

@@ -5,11 +5,11 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="vueGlobale" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.VueGlobale">
+<AnchorPane fx:id="vueGlobale" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.vues.VueGlobale">
 
        <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-           <fx:include fx:id="vueVignettes" source="vueVignettes.fxml" />
-           <fx:include fx:id="vueFenetreAjout" source="vueFenetreAjout.fxml" />
+           <fx:include fx:id="vueVignettes" source="VueVignettes.fxml" />
+           <fx:include fx:id="vueFenetreAjout" source="VueFenetreAjout.fxml" />
        </StackPane>
       <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" BorderPane.alignment="CENTER">
          <children>

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" hmax="0.0" pannable="true" vmax="100.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.VueVignettes">
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" hmax="0.0" pannable="true" vmax="100.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.vues.VueVignettes">
    <content>
       <FlowPane fx:id="panneauVignettes" hgap="10.0" prefWrapLength="700.0" rowValignment="TOP" vgap="10.0">
          <children>

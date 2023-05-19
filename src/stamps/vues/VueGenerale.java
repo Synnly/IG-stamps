@@ -1,17 +1,15 @@
-package stamps;
+package stamps.vues;
 
-import donnees.CollectionProcesseurs;
+import stamps.donnees.CollectionProcesseurs;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import mvc.Observateur;
+import stamps.mvc.Observateur;
 
 import java.io.File;
-import java.net.MalformedURLException;
 
 public class VueGenerale implements Observateur {
 

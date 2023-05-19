@@ -1,4 +1,4 @@
-package mvc;
+package stamps.mvc;
 
 import java.util.ArrayList;
 

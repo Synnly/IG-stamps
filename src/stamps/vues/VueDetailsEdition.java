@@ -1,7 +1,7 @@
-package stamps;
+package stamps.vues;
 
-import donnees.CollectionProcesseurs;
-import donnees.Processeur;
+import stamps.donnees.CollectionProcesseurs;
+import stamps.donnees.Processeur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
-import mvc.Observateur;
+import stamps.mvc.Observateur;
 
 import java.io.File;
 import java.net.MalformedURLException;

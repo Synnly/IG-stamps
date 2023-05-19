@@ -1,7 +1,7 @@
-package stamps;
+package stamps.vues;
 
-import donnees.CollectionProcesseurs;
-import donnees.Processeur;
+import stamps.donnees.CollectionProcesseurs;
+import stamps.donnees.Processeur;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import mvc.Observateur;
+import stamps.mvc.Observateur;
 
 public class VueVignettes implements Observateur {
 

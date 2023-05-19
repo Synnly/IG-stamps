@@ -1,4 +1,4 @@
-package donnees;
+package stamps.donnees;
 
 public class Processeur {
     private int identifiant;

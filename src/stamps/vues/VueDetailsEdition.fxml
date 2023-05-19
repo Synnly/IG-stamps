@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox fx:id="vueDetailsEdition" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="visibility: true;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.VueDetailsEdition">
+<HBox fx:id="vueDetailsEdition" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="visibility: true;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stamps.vues.VueDetailsEdition">
     <children>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
             <children>

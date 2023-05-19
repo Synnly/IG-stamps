@@ -1,4 +1,4 @@
-package donnees;
+package stamps.donnees;
 
 public class FabriqueIdentifiant {
     private int identifiant = 0;
