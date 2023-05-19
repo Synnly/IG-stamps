@@ -1,5 +1,6 @@
 package stamps;
 
+import donnees.Processeur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -67,6 +68,8 @@ public class VueDetails implements Observateur {
             // S'il n'y a pas de modifications en cours, on va chercher l'image dans la collection
             if (!collection.estEnCoursDeModification()){
                 collection.setImageProcesseurEnVueDetails(collection.getImageProcesseurEnVueDetails());
+                Processeur p = collection.getProcesseurEnVueDetails();
+                collection.setCheminImage(p.getCheminImage(), p);
             }
         }
     }

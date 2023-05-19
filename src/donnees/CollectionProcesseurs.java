@@ -1,6 +1,8 @@
 package donnees;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.Image;
@@ -10,6 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.*;
 
 public class CollectionProcesseurs extends SujetObserve implements Iterable<Processeur>{
@@ -145,7 +148,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param chemin Le chemin du fichier
      */
     public void exporterCollection(String chemin) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         File fichier = new File(chemin+"/collection.json");
         FileWriter writer;
         try {
@@ -166,11 +169,36 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      */
     public void importerCollection(String chemin) {
         Gson gson = new Gson();
-        File fichier = new File(chemin+"/collection.json");
+        File fichier = new File(chemin);
         FileReader reader;
+        Type type = new TypeToken<ArrayList<Processeur>>(){}.getType();
+        Image image;
+        Image petiteImage;
         try {
             reader = new FileReader(fichier);
-            System.out.println(gson.fromJson(reader, Processeur.class));
+            listeProcesseurs.clear();
+            ArrayList<Processeur> nouvelleListe = gson.fromJson(reader, type);
+
+            // Nettoyage des listes de tags
+            listeFrequences.clear();
+            listeMarques.clear();
+            listeModeles.clear();
+            listeSockets.clear();
+            listeNbCoeurs.clear();
+            listeNbThreads.clear();
+            listeCaches.clear();
+            listeAnnees.clear();
+
+            // Ajout des processeurs
+            for(Processeur p : nouvelleListe) {
+                ajouterProcesseur(p);
+                System.out.println(p.getCheminImage());
+                image = new Image(p.getCheminImage(), tailleImage, tailleImage, true, true);
+                petiteImage = new Image(p.getCheminImage(),100, 100, true, true);
+                ajouterImage(image, p);
+                ajouterPetiteImage(petiteImage, p);
+            }
+            notifierObservateurs();
         }
         catch (IOException e) {
             e.printStackTrace();
