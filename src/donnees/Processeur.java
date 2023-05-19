@@ -10,19 +10,22 @@ public class Processeur {
     private int nbThreads;
     private int cache;
     private int annee;
+    private String cheminImage;
 
     /**
      * Constructeur complet d'un processeur
-     * @param marque La marque
-     * @param modele Le modèle
-     * @param socket Le socket
-     * @param frequence La fréquence
-     * @param nbCoeurs Le nombre de coeurs
-     * @param nbThreads Le nombre de threads
-     * @param cache La taille du cache en MB
-     * @param annee L'année de sortie
+     *
+     * @param marque      La marque
+     * @param modele      Le modèle
+     * @param socket      Le socket
+     * @param frequence   La fréquence
+     * @param nbCoeurs    Le nombre de coeurs
+     * @param nbThreads   Le nombre de threads
+     * @param cache       La taille du cache en MB
+     * @param annee       L'année de sortie
+     * @param cheminImage Le chemin de l'image
      */
-    public Processeur(String marque, String modele, String socket, float frequence, int nbCoeurs, int nbThreads, int cache, int annee) {
+    public Processeur(String marque, String modele, String socket, float frequence, int nbCoeurs, int nbThreads, int cache, int annee, String cheminImage) {
         this.identifiant = FabriqueIdentifiant.getIntance().getIdentifiant();
         this.marque = marque;
         this.modele = modele;
@@ -32,14 +35,16 @@ public class Processeur {
         this.nbThreads = nbThreads;
         this.cache = cache;
         this.annee = annee;
+        this.cheminImage = cheminImage;
     }
 
     /**
      * Constructeur minimal d'un processeur
+     *
      * @param marque La marque
      * @param modele Le modèle
      */
-    public Processeur (String marque, String modele) {
+    public Processeur(String marque, String modele) {
         this.identifiant = FabriqueIdentifiant.getIntance().getIdentifiant();
         this.marque = marque;
         this.modele = modele;
@@ -49,6 +54,7 @@ public class Processeur {
         this.nbThreads = 0;
         this.cache = 0;
         this.annee = 0;
+        this.cheminImage = "";
     }
 
     /**
@@ -67,6 +73,7 @@ public class Processeur {
 
     /**
      * Modifie la marque du processeur
+     *
      * @param marque La marque du processeur
      */
     public void setMarque(String marque) {
@@ -82,6 +89,7 @@ public class Processeur {
 
     /**
      * Modifie le modèle du processeur
+     *
      * @param modele Le modèle du processeur
      */
     public void setModele(String modele) {
@@ -97,13 +105,14 @@ public class Processeur {
 
     /**
      * Modifie le socket du processeur
+     *
      * @param socket Le socket du processeur
      */
     public void setSocket(String socket) {
         this.socket = socket;
     }
 
-/**
+    /**
      * @return La fréquence du processeur
      */
     public float getFrequence() {
@@ -112,6 +121,7 @@ public class Processeur {
 
     /**
      * Modifie la fréquence du processeur
+     *
      * @param frequence La fréquence du processeur
      */
     public void setFrequence(float frequence) {
@@ -127,6 +137,7 @@ public class Processeur {
 
     /**
      * Modifie le nombre de coeurs du processeur
+     *
      * @param nbCoeurs Le nombre de coeurs du processeur
      */
     public void setNbCoeurs(int nbCoeurs) {
@@ -142,6 +153,7 @@ public class Processeur {
 
     /**
      * Modifie le nombre de threads du processeur
+     *
      * @param nbThreads Le nombre de threads du processeur
      */
     public void setNbThreads(int nbThreads) {
@@ -157,6 +169,7 @@ public class Processeur {
 
     /**
      * Modifie la taille du cache du processeur
+     *
      * @param cache La taille du cache du processeur
      */
     public void setCache(int cache) {
@@ -172,9 +185,26 @@ public class Processeur {
 
     /**
      * Modifie l'année de sortie du processeur
+     *
      * @param annee L'année de sortie du processeur
      */
     public void setAnnee(int annee) {
         this.annee = annee;
+    }
+
+    /**
+     * @return Le chemin de l'image du processeur
+     */
+    public String getCheminImage() {
+        return cheminImage;
+    }
+
+    /**
+     * Modifie le chemin de l'image du processeur
+     *
+     * @param cheminImage Le chemin de l'image du processeur
+     */
+    public void setCheminImage(String cheminImage) {
+        this.cheminImage = cheminImage;
     }
 }

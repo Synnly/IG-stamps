@@ -35,6 +35,7 @@ public class VueFenetreAjout implements Observateur {
 
         Image image = new Image(getClass().getResourceAsStream("/cpu.png"), collec.getTailleImage(), collec.getTailleImage(), true, true);
         Image petiteImage = new Image(getClass().getResourceAsStream("/cpu.png"),100, 100, true, true);
+        collec.setCheminImage("/cpu.png", p);
         collec.ajouterImage(image, p);
         collec.ajouterPetiteImage(petiteImage, p);
         collec.ajouterProcesseur(p);

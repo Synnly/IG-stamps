@@ -57,6 +57,18 @@ public class VueGenerale implements Observateur {
         }
     }
 
+    public void importer(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Fichier JSON", "*.json"));
+        fileChooser.setTitle("Sélectionner le fichier");
+        File file = fileChooser.showOpenDialog(vueGenerale.getScene().getWindow());
+        String chemin;
+        if (file != null) {
+            chemin = file.getAbsolutePath();
+            collection.importerCollection(chemin);
+        }
+    }
+
     /**
      * Quitte l'application
      */

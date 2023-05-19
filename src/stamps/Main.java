@@ -15,18 +15,18 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("vueGenerale.fxml"));
         VueGenerale vge = new VueGenerale(collec);
-        VueGlobale cvg = new VueGlobale(collec);
-        VueVignettes cvv = new VueVignettes(collec);
-        VueDetails cvd = new VueDetails(collec);
+        VueGlobale vg = new VueGlobale(collec);
+        VueVignettes vv = new VueVignettes(collec);
+        VueDetails vd = new VueDetails(collec);
         VueDetailsEdition vde = new VueDetailsEdition(collec);
         VueDetailsConsultation vdc = new VueDetailsConsultation(collec);
         VueFenetreAjout vfa = new VueFenetreAjout(collec);
 
         loader.setControllerFactory(iC->{
-            if (iC.equals(VueGlobale.class)) return cvg;
+            if (iC.equals(VueGlobale.class)) return vg;
             else if (iC.equals(VueFenetreAjout.class)) return vfa;
-            else if (iC.equals(VueVignettes.class)) return cvv;
-            else if (iC.equals(VueDetails.class)) return cvd;
+            else if (iC.equals(VueVignettes.class)) return vv;
+            else if (iC.equals(VueDetails.class)) return vd;
             else if (iC.equals(VueGenerale.class)) return vge;
             else if (iC.equals(VueDetailsEdition.class)) return vde;
             else if (iC.equals(VueDetailsConsultation.class)) return vdc;

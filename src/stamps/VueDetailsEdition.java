@@ -47,6 +47,7 @@ public class VueDetailsEdition implements Observateur {
             try {
                 String chemin = file.toURI().toURL().toString();
                 collection.setImageProcesseurEnVueDetails(new Image(chemin, collection.getTailleImage(), collection.getTailleImage(), true, true));
+                collection.setCheminImageProcesseurEnVueDetails(chemin);
                 collection.commencerModifications();
             }
             catch (MalformedURLException ignored) {}    // En cas d'erreur l'image n'est pas modifiée
@@ -59,8 +60,9 @@ public class VueDetailsEdition implements Observateur {
      */
     public void enregistrer(){
         Processeur proc = collection.getProcesseurEnVueDetails();
-        collection.ajouterImage(collection.getImageProcesseurEnVueDetails(), collection.getProcesseurEnVueDetails());
-        collection.ajouterPetiteImage(collection.getImageProcesseurEnVueDetails(), collection.getProcesseurEnVueDetails());
+        collection.ajouterImage(collection.getImageProcesseurEnVueDetails(), proc);
+        collection.ajouterPetiteImage(collection.getImageProcesseurEnVueDetails(), proc);
+        collection.setCheminImage(collection.getCheminImageProcesseurEnVueDetails(), proc);
 
         String stringTemp;
 
@@ -111,6 +113,7 @@ public class VueDetailsEdition implements Observateur {
      */
     public void annulerEdition(){
         collection.setImageProcesseurEnVueDetails(collection.getImage(collection.getProcesseurEnVueDetails()));
+        collection.setCheminImageProcesseurEnVueDetails("/cpu.png");
         collection.modeConsultation();
         collection.terminerModifications();
         collection.notifierObservateurs();

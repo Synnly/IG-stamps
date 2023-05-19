@@ -10,7 +10,7 @@
                <Menu mnemonicParsing="false" text="Fichiers">
                    <items>
                        <MenuItem fx:id="menuSauvegarder" accelerator="S" mnemonicParsing="false" onAction="#exporter" text="Sauvegarder" />
-                       <MenuItem mnemonicParsing="false" text="Importer" />
+                       <MenuItem mnemonicParsing="false" accelerator="I" text="Importer" onAction="#importer"/>
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Modes">

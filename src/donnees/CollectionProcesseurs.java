@@ -7,9 +7,9 @@ import javafx.scene.image.Image;
 import mvc.SujetObserve;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.*;
 
 public class CollectionProcesseurs extends SujetObserve implements Iterable<Processeur>{
@@ -25,6 +25,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
     private boolean enVueDetails = false;
     private Processeur processeurEnVueDetails = null;
     private Image imageProcesseurEnVueDetails = null;
+    private String cheminImageProcesseurEnVueDetails = null;
     private boolean modeConsultation = true;
     private boolean fenetreAjoutEstVisible = false;
     private int tailleImage = 300;
@@ -150,6 +151,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         try {
             fichier.createNewFile();
             writer = new FileWriter(fichier);
+            System.out.println(gson.toJson(listeProcesseurs));
             writer.write(gson.toJson(listeProcesseurs));
             writer.close();
         }
@@ -163,7 +165,16 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param chemin Le chemin du fichier
      */
     public void importerCollection(String chemin) {
-        // TODO
+        Gson gson = new Gson();
+        File fichier = new File(chemin+"/collection.json");
+        FileReader reader;
+        try {
+            reader = new FileReader(fichier);
+            System.out.println(gson.fromJson(reader, Processeur.class));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -278,6 +289,23 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      */
     public void ajouterPetiteImage(Image image, Processeur proc){
         petitesImages.put(proc, image);
+    }
+
+    /**
+     * Modifie le chemin de l'image associée au processeur
+     * @param chemin Le chemin de l'image
+     * @param proc Le processeur
+     */
+    public void setCheminImage(String chemin, Processeur proc){
+        proc.setCheminImage(chemin);
+    }
+
+    /**
+     * @param proc Le processeur
+     * @return L'image associée au processeur
+     */
+    public String getCheminImage(Processeur proc){
+        return proc.getCheminImage();
     }
 
     @Override
@@ -535,4 +563,8 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param image La nouvelle image
      */
     public void setImageProcesseurEnVueDetails(Image image) {imageProcesseurEnVueDetails = image;}
+
+    public void setCheminImageProcesseurEnVueDetails(String chemin) {cheminImageProcesseurEnVueDetails = chemin;}
+
+    public String getCheminImageProcesseurEnVueDetails() {return cheminImageProcesseurEnVueDetails;}
 }
