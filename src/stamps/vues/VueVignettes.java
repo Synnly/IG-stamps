@@ -1,5 +1,6 @@
 package stamps.vues;
 
+import javafx.geometry.Pos;
 import stamps.donnees.CollectionProcesseurs;
 import stamps.donnees.Processeur;
 import javafx.fxml.FXML;
@@ -67,7 +68,7 @@ public class VueVignettes implements Observateur {
             etiquetteModele.setEllipsisString("...");
             etiquetteModele.setMaxWidth(100.0);
             etiquetteModele.setContextMenu(menu);
-            etiquetteModele.setAlignment(javafx.geometry.Pos.CENTER);
+            etiquetteModele.setAlignment(Pos.BASELINE_CENTER);
 
             vignette = new VBox();
             vignette.setPadding(new Insets(5, 5, 5, 5));

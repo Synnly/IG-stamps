@@ -53,6 +53,8 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         images = new HashMap<>();
         nbProcesseurs = new SimpleIntegerProperty(0);
         indiceProcesseurEnVueDetails = new SimpleIntegerProperty(0);
+
+        importerCollection(getClass().getResource("/collection.json").getPath());
     }
 
     /**
@@ -182,6 +184,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         try {
             reader = new FileReader(fichier);
             listeProcesseurs.clear();
+            nbProcesseurs.set(0);
             ArrayList<Processeur> nouvelleListe = gson.fromJson(reader, type);
 
             // Nettoyage des listes de tags
@@ -197,14 +200,17 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
             // Ajout des processeurs
             for(Processeur p : nouvelleListe) {
                 ajouterProcesseur(p);
-                image = new Image(p.getCheminImage(), tailleImage, tailleImage, true, true);
-                petiteImage = new Image(p.getCheminImage(),100, 100, true, true);
+                image = new Image(p.getCheminImage() == null ? "/cpu.png" : p.getCheminImage(), tailleImage, tailleImage, true, true);
+                petiteImage = new Image(p.getCheminImage() == null ? "/cpu.png" : p.getCheminImage(),100, 100, true, true);
                 ajouterImage(image, p);
                 ajouterPetiteImage(petiteImage, p);
             }
+
             notifierObservateurs();
         }
-        catch (IOException ignored) {}
+        catch (IOException ignored) {
+            System.out.println(ignored.getMessage());
+        }
     }
 
     /**

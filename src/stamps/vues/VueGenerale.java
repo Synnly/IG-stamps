@@ -63,6 +63,7 @@ public class VueGenerale implements Observateur {
         String chemin;
         if (file != null) {
             chemin = file.getAbsolutePath();
+            System.out.println(chemin);
             collection.importerCollection(chemin);
         }
     }

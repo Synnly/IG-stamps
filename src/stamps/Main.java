@@ -42,6 +42,7 @@ public class Main extends Application {
         primaryStage.setWidth(720);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        primaryStage.setTitle("Collection de calculatrices avec des étapes supplémentaires");
 
         collec.notifierObservateurs();
     }

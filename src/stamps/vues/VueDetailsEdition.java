@@ -129,36 +129,36 @@ public class VueDetailsEdition implements Observateur {
             vignetteProcesseur1.setPreserveRatio(true);
             vignetteProcesseur1.setFitWidth(collection.getTailleImage());
 
-            comboMarque.setValue(proc.getMarque());
             comboMarque.getItems().clear();
+            comboMarque.setValue(proc.getMarque());
             comboMarque.getItems().addAll(collection.getListeMarques());
 
-            comboModele.setValue(proc.getModele());
             comboModele.getItems().clear();
+            comboModele.setValue(proc.getModele());
             comboModele.getItems().addAll(collection.getListeModeles());
 
-            comboFrequence.setValue(Float.toString(proc.getFrequence()));
             comboFrequence.getItems().clear();
+            comboFrequence.setValue(Float.toString(proc.getFrequence()));
             comboFrequence.getItems().addAll(collection.getlisteFrequenceAsString());
 
-            comboSocket.setValue(proc.getSocket());
             comboSocket.getItems().clear();
+            comboSocket.setValue(proc.getSocket());
             comboSocket.getItems().addAll(collection.getListeSockets());
 
-            comboNbCoeurs.setValue(Integer.toString(proc.getNbCoeurs()));
             comboNbCoeurs.getItems().clear();
+            comboNbCoeurs.setValue(Integer.toString(proc.getNbCoeurs()));
             comboNbCoeurs.getItems().addAll(collection.getlisteNbCoeursAsString());
 
-            comboNbThreads.setValue(Integer.toString(proc.getNbThreads()));
             comboNbThreads.getItems().clear();
+            comboNbThreads.setValue(Integer.toString(proc.getNbThreads()));
             comboNbThreads.getItems().addAll(collection.getlisteNbThreadsAsString());
 
-            comboAnnee.setValue(Integer.toString(proc.getAnnee()));
             comboAnnee.getItems().clear();
+            comboAnnee.setValue(Integer.toString(proc.getAnnee()));
             comboAnnee.getItems().addAll(collection.getlisteAnneesAsString());
 
-            comboCache.setValue(Integer.toString(proc.getCache()));
             comboCache.getItems().clear();
+            comboCache.setValue(Integer.toString(proc.getCache()));
             comboCache.getItems().addAll(collection.getlisteCacheAsString());
         }
     }
