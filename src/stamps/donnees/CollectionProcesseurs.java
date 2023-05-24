@@ -205,12 +205,10 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
                 ajouterImage(image, p);
                 ajouterPetiteImage(petiteImage, p);
             }
-
+            trierProcesseurs();
             notifierObservateurs();
         }
-        catch (IOException ignored) {
-            System.out.println(ignored.getMessage());
-        }
+        catch (IOException ignored) {}
     }
 
     /**
