@@ -53,8 +53,8 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
         images = new HashMap<>();
         nbProcesseurs = new SimpleIntegerProperty(0);
         indiceProcesseurEnVueDetails = new SimpleIntegerProperty(0);
-
-        importerCollection(getClass().getResource("/collection.json").getPath());
+        String collectionJSON = "[{\"identifiant\":0,\"marque\":\"AMD\",\"modele\":\"EPYC 5764\",\"socket\":\"\",\"frequence\":2.4,\"nbCoeurs\":96,\"nbThreads\":192,\"cache\":384,\"annee\":2022,\"cheminImage\":\"/Processeurs/EPYC_5764.jpg\"},{\"identifiant\":2,\"marque\":\"AMD\",\"modele\":\"Ryzen Threadripper PRO 5965WX\",\"socket\":\"sWRX8\",\"frequence\":3.8,\"nbCoeurs\":24,\"nbThreads\":48,\"cache\":128,\"annee\":2022,\"cheminImage\":\"/Processeurs/threadripperpro.jpg\"},{\"identifiant\":1,\"marque\":\"Apple\",\"modele\":\"M1 Ultra\",\"socket\":\"\",\"frequence\":3.2,\"nbCoeurs\":20,\"nbThreads\":20,\"cache\":0,\"annee\":2022,\"cheminImage\":\"/Processeurs/Apple_M1_Ultra_20_Core.png\"},{\"identifiant\":0,\"marque\":\"Intel\",\"modele\":\"Core i7-13900K\",\"socket\":\"FCLGA17000\",\"frequence\":3.0,\"nbCoeurs\":24,\"nbThreads\":32,\"cache\":36,\"annee\":2022,\"cheminImage\":\"/Processeurs/intel_core_i9k.jpg\"},{\"identifiant\":1,\"marque\":\"Intel\",\"modele\":\"Xeon W9-3475X\",\"socket\":\"FCLGA4677\",\"frequence\":2.2,\"nbCoeurs\":36,\"nbThreads\":72,\"cache\":165,\"annee\":2023,\"cheminImage\":\"/Processeurs/xeon_w9-3475X.png\"}]";
+        importerCollectionString(collectionJSON);
     }
 
     /**
@@ -158,7 +158,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param chemin Le chemin du fichier
      */
     public void exporterCollection(String chemin) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().create();
         File fichier = new File(chemin+"/collection.json");
         FileWriter writer;
         try {
@@ -209,6 +209,39 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
             notifierObservateurs();
         }
         catch (IOException ignored) {}
+    }
+
+    /**
+     * Importe une collection de processeurs depuis une chaîne de caractères JSON
+     * @param json La chaîne de caractères JSON
+     */
+    public void importerCollectionString(String json){
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<Processeur>>(){}.getType();
+        Image image;
+        Image petiteImage;
+        ArrayList<Processeur> nouvelleListe = gson.fromJson(json, type);
+
+        // Nettoyage des listes de tags
+        listeFrequences.clear();
+        listeMarques.clear();
+        listeModeles.clear();
+        listeSockets.clear();
+        listeNbCoeurs.clear();
+        listeNbThreads.clear();
+        listeCaches.clear();
+        listeAnnees.clear();
+
+        // Ajout des processeurs
+        for(Processeur p : nouvelleListe) {
+            ajouterProcesseur(p);
+            image = new Image(p.getCheminImage() == null ? "/cpu.png" : p.getCheminImage(), tailleImage, tailleImage, true, true);
+            petiteImage = new Image(p.getCheminImage() == null ? "/cpu.png" : p.getCheminImage(),100, 100, true, true);
+            ajouterImage(image, p);
+            ajouterPetiteImage(petiteImage, p);
+        }
+        trierProcesseurs();
+        notifierObservateurs();
     }
 
     /**
