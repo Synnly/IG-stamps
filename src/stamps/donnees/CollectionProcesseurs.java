@@ -8,10 +8,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.Image;
 import stamps.mvc.SujetObserve;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.util.*;
 
@@ -200,10 +197,14 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
             // Ajout des processeurs
             for(Processeur p : nouvelleListe) {
                 ajouterProcesseur(p);
+                boolean imageExiste;
+                // Si l'image n'existe pas ou si le chemin n'est pas renseigné, on assigne l'image par défaut
                 image = new Image(p.getCheminImage() == null ? "/cpu.png" : p.getCheminImage(), tailleImage, tailleImage, true, true);
-                petiteImage = new Image(p.getCheminImage() == null ? "/cpu.png" : p.getCheminImage(),100, 100, true, true);
-                ajouterImage(image, p);
-                ajouterPetiteImage(petiteImage, p);
+                imageExiste = !(image.getException() != null && image.getException().getClass().equals(FileNotFoundException.class));
+                ajouterImage(imageExiste ? image : new Image("/cpu.png", tailleImage, tailleImage, true, true), p);
+
+                petiteImage = new Image(p.getCheminImage() == null ? "/cpu.png" : p.getCheminImage(), 100, 100, true, true);
+                ajouterPetiteImage(imageExiste ? petiteImage : new Image("/cpu.png", 100, 100, true, true), p);
             }
             trierProcesseurs();
             notifierObservateurs();
