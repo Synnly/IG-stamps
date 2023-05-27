@@ -155,7 +155,7 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * @param chemin Le chemin du fichier
      */
     public void exporterCollection(String chemin) {
-        Gson gson = new GsonBuilder().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         File fichier = new File(chemin+"/collection.json");
         FileWriter writer;
         try {
