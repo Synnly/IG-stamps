@@ -1,5 +1,8 @@
 package stamps.vues;
 
+import javafx.animation.PauseTransition;
+import javafx.scene.control.Alert;
+import javafx.util.Duration;
 import stamps.donnees.CollectionProcesseurs;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -63,7 +66,20 @@ public class VueGenerale implements Observateur {
         String chemin;
         if (file != null) {
             chemin = file.getAbsolutePath();
-            collection.importerCollection(chemin);
+            try {
+                collection.importerCollection(chemin);
+            }
+            catch (Exception e){
+                // Creation de la boite d'erreur
+                Alert boiteErreur = new Alert(Alert.AlertType.ERROR);
+                boiteErreur.setHeaderText("Fichier JSON invalide");
+                boiteErreur.show();
+
+                // Creation du chronometre
+                PauseTransition pause = new PauseTransition(Duration.seconds(10));
+                pause.setOnFinished(event-> boiteErreur.close());
+                pause.play();
+            }
         }
     }
 

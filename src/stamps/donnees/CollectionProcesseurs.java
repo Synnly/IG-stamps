@@ -171,13 +171,14 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
      * Importe une collection de processeurs depuis un fichier JSON
      * @param chemin Le chemin du fichier
      */
-    public void importerCollection(String chemin) {
+    public void importerCollection(String chemin) throws Exception{
         Gson gson = new Gson();
         File fichier = new File(chemin);
         FileReader reader;
         Type type = new TypeToken<ArrayList<Processeur>>(){}.getType();
         Image image;
         Image petiteImage;
+        List<Processeur> temp = listeProcesseurs;
         try {
             reader = new FileReader(fichier);
             listeProcesseurs.clear();
@@ -207,9 +208,12 @@ public class CollectionProcesseurs extends SujetObserve implements Iterable<Proc
                 ajouterPetiteImage(imageExiste ? petiteImage : new Image("/cpu.png", 100, 100, true, true), p);
             }
             trierProcesseurs();
-            notifierObservateurs();
         }
-        catch (IOException ignored) {}
+        catch (Exception e) {
+            listeProcesseurs = temp;
+            throw new Exception(e.getMessage());
+        }
+        notifierObservateurs();
     }
 
     /**
